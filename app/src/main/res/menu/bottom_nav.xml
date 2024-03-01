@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/partidosFragment"
+        android:title="Partidos"
+        android:icon="@drawable/ic_cancha"/>
+    <item
+        android:id="@+id/posicionesFragment"
+        android:title="Posiciones"
+        android:icon="@drawable/ic_tabla" />
+    <item
+        android:id="@+id/estadisticasFragment"
+        android:title="Estadisticas"
+        android:icon="@drawable/ic_estadisticas"/>
+</menu>
