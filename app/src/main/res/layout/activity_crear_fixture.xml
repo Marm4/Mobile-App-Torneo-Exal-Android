@@ -5,161 +5,156 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".view.CrearFixtureActivity">
+    tools:context=".view.admin.CrearFixtureActivity">
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@id/guardar"
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Fixture"
-            style="@style/textStyle"
-            android:textSize="15sp"
-            android:paddingTop="10dp"
-            android:gravity="center"
-            />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="15dp"
-            >
+            android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/fecha"
+            <TextView
+                android:id="@+id/titulo"
                 style="@style/textStyle"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginTop="5dp"
-                android:background="@color/primary"
-                android:hint="Seleccione una fecha"
-                android:paddingStart="20dp"
-                android:textColorHint="@color/textColorHint"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:layout_editor_absoluteX="0dp" />
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:text="Fixture"
+                android:textSize="15sp" />
+
 
             <TextView
                 style="@style/textStyle"
-                android:layout_width="70dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/view_redondeado"
-                android:gravity="center"
                 android:text="Fecha"
                 android:textStyle="normal"
-                android:textSize="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/fecha"
+                app:layout_constraintHorizontal_bias="0.037"
+                app:layout_constraintStart_toStartOf="@+id/fecha"
+                app:layout_constraintTop_toTopOf="@id/fecha" />
+
+
+            <TextView
+                android:id="@+id/fecha"
+                style="@style/textStyle"
+                android:layout_width="350dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/view_borde_redondeado"
+                android:gravity="center_vertical"
+                android:paddingStart="10dp"
+                android:paddingTop="25dp"
+                android:hint="Seleccione una fecha"
+                android:textColorHint="@color/azulVinculo"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.046"
+                app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/equipos"
-                style="@style/textStyle"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@color/background"
-                android:gravity="center_vertical"
-                android:hint="Seleccione dos equipos"
-                android:paddingStart="20dp"
-                android:textColorHint="@color/textColorHint"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fecha"
-                app:layout_constraintVertical_bias="0.0"
-                tools:layout_editor_absoluteX="0dp" />
-
-            <TextView
-                style="@style/textStyle"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="48dp"
-                android:background="@drawable/view_redondeado_blanco"
-                android:gravity="center"
-                android:text="Equipos"
-                android:textSize="10dp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@id/equipos"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.046"
-                app:layout_constraintStart_toStartOf="parent" />
-
-
-
-            <TextView
-                android:id="@+id/dia"
-                style="@style/textStyle"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@color/primary"
-                android:hint="Seleccione una hora"
-                android:paddingStart="20dp"
-                android:textColorHint="@color/textColorHint"
-                android:textSize="12sp"
-                android:textStyle="normal"
-                android:gravity="center_vertical"
-                app:layout_constraintTop_toBottomOf="@id/equipos"
-                tools:layout_editor_absoluteX="0dp" />
-
-            <TextView
-                style="@style/textStyle"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="48dp"
-                android:background="@drawable/view_redondeado"
-                android:gravity="center"
-                android:text="Hora/Dia"
-                android:textSize="10dp"
-                android:textStyle="normal"
-                app:layout_constraintBottom_toBottomOf="@id/dia"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.046"
-                app:layout_constraintStart_toStartOf="parent" />
-
+                app:layout_constraintTop_toBottomOf="@id/titulo" />
 
             <LinearLayout
-                android:id="@+id/agregarLL"
-                android:layout_width="70dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/view_redondeado"
-                android:gravity="center"
+                android:id="@+id/partidoLL"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/view_borde_redondeado"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dia">
+                app:layout_constraintTop_toBottomOf="@+id/fecha">
 
-                <ImageView
-                    android:id="@+id/agregarIV"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    app:srcCompat="@drawable/ic_agregar" />
+
+                <LinearLayout
+                    android:id="@+id/equiposLL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/equiposTV"
+                        style="@style/textStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Equipos y horario" />
+
+
+
+                    <ImageView
+                        android:id="@+id/agregarIV"
+                        android:layout_width="match_parent"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="10dp"
+                        app:srcCompat="@drawable/ic_agregar" />
+
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:background="@color/primary"
-                android:gravity="center"
-                style="@style/textStyle"
-                android:text="Guardar"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
 
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
+    </ScrollView>
 
+    <TextView
+        android:id="@+id/guardar"
+        style="@style/textStyle"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/primary"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:text="Crear fixture"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/pantallaCarga"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/background"
+        android:visibility="gone">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginTop="104dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_logo" />
+
+        <ProgressBar
+            android:id="@+id/progressBar2"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="300dp"
+            android:progressTint="@color/primary"/>
     </LinearLayout>
 
 

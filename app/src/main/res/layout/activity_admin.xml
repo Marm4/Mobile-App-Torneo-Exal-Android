@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".view.AdminActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Panel administrador"
+        style="@style/textStyle"
+        android:textSize="15sp"
+        android:paddingTop="10dp"
+        android:gravity="center"
+        />
+
+        <TextView
+        android:id="@+id/agregarEquipo"
+        style="@style/textStyle"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="35dp"
+        android:background="@color/primary"
+        android:textSize="15sp"
+        android:textStyle="normal"
+        android:text="Agregar equipos"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/agregarFixture"
+            style="@style/textStyle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="35dp"
+            android:background="@color/primary"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            android:text="Agregar fixture"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/verEquipo"
+            style="@style/textStyle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="35dp"
+            android:background="@color/primary"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            android:text="Ver equipos"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <TextView
+            android:id="@+id/verFixture"
+            style="@style/textStyle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="35dp"
+            android:background="@color/primary"
+            android:textSize="15sp"
+            android:textStyle="normal"
+            android:text="Ver fixtures"
+            android:gravity="center"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="0dp" />
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

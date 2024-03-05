@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,10 +18,34 @@
         android:theme="@style/Theme.TorneoExal"
         tools:targetApi="31">
         <activity
-            android:name=".view.CrearClubActivity"
+            android:name=".view.admin.CrearPartidoActivity"
             android:exported="false" />
         <activity
-            android:name=".view.CrearFixtureActivity"
+            android:name=".view.PartidoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.ClubActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.VerFixtureActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.VerClubesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.auth.IniciarSesionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.auth.RegistrarseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.AdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.CrearClubActivity"
+            android:exported="false" />
+        <activity
+            android:name=".view.admin.CrearFixtureActivity"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity"

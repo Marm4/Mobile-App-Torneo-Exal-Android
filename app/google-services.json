@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1071596957373",
+    "firebase_url": "https://torneo-exal-default-rtdb.firebaseio.com",
+    "project_id": "torneo-exal",
+    "storage_bucket": "torneo-exal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1071596957373:android:e2175ad4fa436dcd82d1d4",
+        "android_client_info": {
+          "package_name": "com.marm4.torneoexal"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDpCKFE_MtUmactbg7Ou2SHfVsuaRNUAA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

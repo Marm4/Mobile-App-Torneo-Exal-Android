@@ -2,12 +2,14 @@ package com.marm4.torneoexal.model;
 
 import android.net.Uri;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Equipo {
-
+    private String id;
     private String nombre;
     private Uri escudo;
+    private String urlEscudo;
     private List<Jugador> jugadores;
     private List<Partido> partidos;
 
@@ -54,10 +56,38 @@ public class Equipo {
     }
 
     public void addJugador(Jugador jugador){
+        if(jugadores == null)
+            jugadores = new ArrayList<>();
         jugadores.add(jugador);
     }
 
     public void addPartido(Partido partido){
+        if(partidos == null)
+            partidos = new ArrayList<>();
         partidos.add(partido);
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUrlEscudo() {
+        return urlEscudo;
+    }
+
+    public void setUrlEscudo(String urlEscudo) {
+        this.urlEscudo = urlEscudo;
+    }
+
+    public Jugador buscarJugadorPorId(String id){
+        for(Jugador j : jugadores){
+            if(j.getId().equals(id))
+                return j;
+        }
+        return null;
     }
 }

@@ -6,5 +6,7 @@
     <color name="primary">#66A3E2</color>
     <color name="primaryVariation">#1A6CC0</color>
     <color name="secondary">#D9D9D9</color>
-    <color name="gris">#D9D9D9</color>
+    <color name="gris">#F1EFEF</color>
+    <color name="azulVinculo">#DE0645AD</color>
+    <color name="rojoEliminar">#DEE41515</color>
 </resources>
