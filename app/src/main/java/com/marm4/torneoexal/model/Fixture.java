@@ -8,6 +8,7 @@ public class Fixture {
     private String fechaNro;
     private List<Partido> partidos;
 
+
     public Fixture(String fechaNro, List<Partido> partidos) {
         this.fechaNro = fechaNro;
         this.partidos = partidos;

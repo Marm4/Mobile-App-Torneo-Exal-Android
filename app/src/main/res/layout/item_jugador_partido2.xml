@@ -3,17 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-
     android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clUno"
-        android:layout_width="190dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:gravity="start"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/clDos"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,13 +21,15 @@
         <TextView
             android:id="@+id/jugadorUno"
             style="@style/textStyle"
-            android:layout_width="85dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginStart="4dp"
+            android:layout_marginEnd="10dp"
             android:gravity="center_vertical"
             android:paddingStart="5dp"
             android:text="Jugadores"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/itemUno"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
@@ -50,29 +51,30 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clDos"
-        android:layout_width="190dp"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:gravity="start"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/clUno"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/jugadorDos"
             style="@style/textStyle"
-            android:layout_width="85dp"
+            android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_marginEnd="4dp"
             android:gravity="center_vertical|right"
             android:paddingEnd="5dp"
-
+            android:layout_marginStart="10dp"
             android:text="Jugadores"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/itemDos"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 

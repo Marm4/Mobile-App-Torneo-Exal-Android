@@ -93,13 +93,13 @@ public class EstadisticasPartidoAdapter extends RecyclerView.Adapter<Estadistica
                 jugador1.setText(estadisticas.getNombreJugadorEquipo1());
             }
             else
-                cl1.setVisibility(View.GONE);
+                cl1.setVisibility(View.INVISIBLE);
 
             if(!estadisticas.getNombreJugadorEquipo2().isEmpty()){
                 jugador2.setText(estadisticas.getNombreJugadorEquipo2());
             }
             else
-                cl2.setVisibility(View.GONE);
+                cl2.setVisibility(View.INVISIBLE);
 
         }
 

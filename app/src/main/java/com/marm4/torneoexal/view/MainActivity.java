@@ -1,54 +1,78 @@
 package com.marm4.torneoexal.view;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
+
+
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.google.android.material.navigation.NavigationView;
 import com.marm4.torneoexal.R;
 import com.marm4.torneoexal.controller.AuthController;
 import com.marm4.torneoexal.controller.TorneoController;
 import com.marm4.torneoexal.global.Adapters;
+import com.marm4.torneoexal.global.Globals;
 import com.marm4.torneoexal.global.Torneo;
 import com.marm4.torneoexal.listener.DescargaExito;
+import com.marm4.torneoexal.listener.DevolverUsuarios;
 import com.marm4.torneoexal.listener.TorneoNotificacion;
 import com.marm4.torneoexal.model.Equipo;
 import com.marm4.torneoexal.model.Fixture;
 import com.marm4.torneoexal.model.Partido;
+import com.marm4.torneoexal.model.Usuario;
 import com.marm4.torneoexal.utility.DescargarImagenUtility;
+import com.marm4.torneoexal.view.admin.AdminActivity;
+import com.marm4.torneoexal.view.admin.club.VerClubesActivity;
+import com.marm4.torneoexal.view.admin.fixture.VerFixtureActivity;
 import com.marm4.torneoexal.view.auth.IniciarSesionActivity;
-
+import com.marm4.torneoexal.view.nav.EstadisticasFragment;
+import com.marm4.torneoexal.view.nav.PartidosFragment;
+import com.marm4.torneoexal.view.nav.PosicionesFragment;
 import java.io.File;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
 
-    private BottomNavigationView navView;
-    private ImageView menu;
 
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
+    private NavigationView navView;
+    private DrawerLayout drawerLayout;
     private LinearLayout pantallaCarga;
+    private static final int TIME_INTERVAL = 2000;
+    private long backPressedTime;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         checkAuth();
     }
@@ -56,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
     private void checkAuth() {
         AuthController authController = new AuthController();
         pantallaCarga = findViewById(R.id.pantallaCarga);
+        setSharedPreferences(false);
         if(!authController.isUserLoggedIn()){
             Intent intent = new Intent(MainActivity.this, IniciarSesionActivity.class);
             startActivity(intent);
@@ -70,12 +95,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void cargarDatos() {
-        TorneoController equipoController = new TorneoController();
-        equipoController.cargarEquipos(new TorneoNotificacion() {
+        TorneoController torneoController = new TorneoController();
+
+        torneoController.cargarEquipos(new TorneoNotificacion() {
             @Override
             public void torneoNotificacion(Boolean exito) {
 
-                    equipoController.cargarFixture(new TorneoNotificacion() {
+                    torneoController.cargarFixture(new TorneoNotificacion() {
                         @Override
                         public void torneoNotificacion(Boolean exito) {
                             File file = new File(getApplicationContext().getExternalFilesDir(null), "Torneo-Exal");
@@ -93,9 +119,15 @@ public class MainActivity extends AppCompatActivity {
                                                 if(fixture.getFechaNro().equals("Fecha 1"))
                                                     partidos = fixture.getPartidos();
 
-
+                                            AuthController authController = new AuthController();
                                             Adapters.getInstance().setListPartidos(partidos);
-                                            initUI();
+                                            torneoController.getProximaFecha();
+                                            authController.setUser(new DevolverUsuarios() {
+                                                @Override
+                                                public void devolverUsuarios(List<Usuario> usuarios) {
+                                                    initUI();
+                                                }
+                                            });
 
                                         }
 
@@ -133,17 +165,106 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initUI() {
+        if(Globals.getInstance().getSharedPreferences(this).getBoolean("view initialized", false))
+            return;
+
+
         pantallaCarga.setVisibility(View.GONE);
 
-        NavController navController = Navigation.findNavController(this, R.id.fragmentContainerView);
-        navView = findViewById(R.id.botNavView);
+        navView = findViewById(R.id.nav_view);
         navView.setVisibility(View.VISIBLE);
-        NavigationUI.setupWithNavController(navView, navController);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        navView.setItemBackgroundResource(R.drawable.navigation_item);
+        navView.setItemTextColor(colorState());
 
-        menu = findViewById(R.id.menu);
-        menu.setOnClickListener(view -> {
+        drawerLayout = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        if(!Globals.getInstance().getUsuario().isAdmin()){
+            MenuItem adminMenuItem = navView.getMenu().findItem(R.id.adminActivity);
+            adminMenuItem.setVisible(false);
+        }
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PosicionesFragment()).commit();
+        navView.setCheckedItem(R.id.partidosFragment);
+        navView.setNavigationItemSelectedListener(this);
+        navView.bringToFront();
+        setSharedPreferences(true);
+    }
+
+    private ColorStateList colorState(){
+        ColorStateList colorSelector = new ColorStateList(
+                new int[][]{
+                        new int[]{android.R.attr.state_checked},
+                        new int[]{}
+                },
+                new int[]{
+                        ContextCompat.getColor(this, R.color.primaryVariation),
+                        Color.BLACK
+                }
+        );
+        return colorSelector;
+    }
+
+    private  void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
+        fragmentTransaction.commit();
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        drawerLayout.closeDrawer(GravityCompat.START);
+        if(item.getItemId() == R.id.partidosFragment)
+            replaceFragment(new PartidosFragment());
+        else if(item.getItemId() == R.id.posicionesFragment)
+            replaceFragment(new PosicionesFragment());
+        else if(item.getItemId() == R.id.estadisticasFragment)
+            replaceFragment(new EstadisticasFragment());
+        else if(item.getItemId() == R.id.adminActivity){
             Intent intent = new Intent(MainActivity.this, AdminActivity.class);
             startActivity(intent);
-        });
+        }
+        else if(item.getItemId() == R.id.equiposActivity){
+            Intent intent = new Intent(MainActivity.this, VerClubesActivity.class);
+            startActivity(intent);
+        }
+        else if(item.getItemId() == R.id.fixtureActivity){
+            Intent intent = new Intent(MainActivity.this, VerFixtureActivity.class);
+            startActivity(intent);
+        }
+        else if(item.getItemId() == R.id.logOut){
+            AuthController authController = new AuthController();
+            authController.logOut();
+            Intent intent = new Intent(MainActivity.this, IniciarSesionActivity.class);
+            startActivity(intent);
+        }
+
+
+        return true;
     }
+
+    private void setSharedPreferences(boolean value){
+        SharedPreferences.Editor editor = Globals.getInstance().getSharedPreferences(this).edit();
+        editor.putBoolean("view initialized", value);
+        editor.apply();
+    }
+
+
+
+    @Override
+    public void onBackPressed() {
+        if (backPressedTime + TIME_INTERVAL > System.currentTimeMillis()) {
+            super.onBackPressed();
+            finish();
+        }
+        backPressedTime = System.currentTimeMillis();
+    }
+
+
 }

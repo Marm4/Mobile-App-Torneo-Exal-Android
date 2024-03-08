@@ -121,8 +121,18 @@ public class VistaPartidosAdapter extends RecyclerView.Adapter<VistaPartidosAdap
             equipoUno.setText(eUno.getNombre());
             equipoDos.setText(eDos.getNombre());
 
+            String golesEquipoUno = "0";
+            String golesEquipoDos = "0";
+            if(partido.getGolesEquipoUno()!=null)
+                golesEquipoUno = String.valueOf(partido.getGolesEquipoUno().size());
+
+            if(partido.getGolesEquipoDos()!=null)
+                golesEquipoDos = String.valueOf(partido.getGolesEquipoDos().size());
+
             if(compararFechas(partido.getDiaHora()))
-                vs.setText(partido.getResultadoUno() + " - " + partido.getResultadoDos());
+                vs.setText(golesEquipoUno + " - " + golesEquipoDos);
+            else
+                vs.setText("vs");
 
 
             ll.setOnClickListener(view -> {

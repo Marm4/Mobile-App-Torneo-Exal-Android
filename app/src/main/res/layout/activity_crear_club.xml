@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".view.admin.CrearClubActivity">
+    tools:context=".view.admin.club.CrearClubActivity">
 
 
 
@@ -24,10 +24,17 @@
             android:gravity="center"
             />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="15dp"
+            android:paddingTop="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             >
 
             <TextView
@@ -43,8 +50,12 @@
 
             <EditText
                 android:id="@+id/nombre"
-                android:layout_width="300dp"
-                android:layout_height="70dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="10dp"
                 android:background="@drawable/view_borde_redondeado"
                 android:paddingStart="10dp"
                 android:paddingTop="25dp"
@@ -55,7 +66,9 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.495"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                android:imeOptions="actionNext"
+                android:singleLine="true"/>
 
 
 
@@ -73,9 +86,12 @@
 
             <TextView
                 android:id="@+id/escudo"
-                android:layout_width="300dp"
-                android:layout_height="70dp"
-                android:layout_marginTop="24dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="20dp"
+                android:paddingBottom="10dp"
                 android:background="@drawable/view_borde_redondeado"
                 android:paddingStart="10dp"
                 android:paddingTop="39dp"
@@ -100,9 +116,11 @@
                 app:layout_constraintVertical_bias="0.45" />
 
             <LinearLayout
-                android:layout_width="300dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="20dp"
                 android:orientation="vertical"
                 android:background="@drawable/view_borde_redondeado"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -121,10 +139,11 @@
 
                 <EditText
                     android:id="@+id/jugadores"
-                    android:layout_width="250dp"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:paddingTop="15dp"
                     android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
                     android:textSize="12sp"
                     android:background="@color/background"
                     style="@style/textStyle"
@@ -132,7 +151,9 @@
                     android:hint="Escribe aquí"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.495"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:imeOptions="actionNext"
+                    android:singleLine="true"/>
 
                 <LinearLayout
                     android:id="@+id/jugadoresLL"
@@ -143,36 +164,37 @@
 
                 <ImageView
                     android:id="@+id/agregarJugadores"
-                    android:layout_width="290dp"
+                    android:layout_width="match_parent"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="7dp"
+                    android:layout_margin="8dp"
                     app:srcCompat="@drawable/ic_agregar" />
 
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/guardar"
-                style="@style/textStyle"
-                android:layout_width="300dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="28dp"
-                android:background="@color/primary"
-                android:gravity="center"
-                android:text="Crear equipo"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent" />
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <TextView
+                android:id="@+id/guardar"
+                style="@style/textStyle"
+                android:layout_width="match_parent"
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="40dp"
+                android:background="@color/primary"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="Crear equipo"
+                android:textSize="15sp" />
 
-        
+
+        </LinearLayout>
+
+        </ScrollView>
+
 
 
     </LinearLayout>

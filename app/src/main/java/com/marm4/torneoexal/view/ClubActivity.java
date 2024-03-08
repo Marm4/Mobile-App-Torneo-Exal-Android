@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,6 +35,7 @@ public class ClubActivity extends AppCompatActivity {
     private RecyclerView rv1;
     private RecyclerView rv2;
     private List<Map<Partido, String>> mapList;
+    private TextView eliminarPartido;
 
 
 
@@ -62,6 +64,7 @@ public class ClubActivity extends AppCompatActivity {
         partidos = findViewById(R.id.partidos);
         rv1 = findViewById(R.id.recyclerViewUno);
         rv2 = findViewById(R.id.recyclerViewDos);
+        eliminarPartido = findViewById(R.id.eliminar);
     }
     private void setViews() {
         nombre.setText(equipo.getNombre());
@@ -69,6 +72,8 @@ public class ClubActivity extends AppCompatActivity {
         goles.setText(getGoles());
         puntos.setText(Torneo.getInstance().getPuntosPorId(equipo.getId()));
         partidos.setText(Torneo.getInstance().getPartidosJugador(equipo.getId()));
+        if(!Globals.getInstance().getUsuario().isAdmin())
+            eliminarPartido.setVisibility(View.GONE);
     }
 
     private String getGoles() {

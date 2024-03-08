@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.flexbox.FlexboxLayout;
 import com.marm4.torneoexal.R;
@@ -41,11 +42,12 @@ public class CrearPartidoActivity extends AppCompatActivity {
     private LinearLayout ll2;
     private List<View> jugadoresView;
     private Jugador jugadorSeleccionado;
-    private LinearLayout gol;
-    private LinearLayout amarilla;
-    private LinearLayout roja;
+    private ImageView gol;
+    private ImageView amarilla;
+    private ImageView roja;
     private FlexboxLayout jugadorLayout;
     private TorneoController torneoController;
+    private ImageView mvp;
 
 
 
@@ -79,6 +81,7 @@ public class CrearPartidoActivity extends AppCompatActivity {
         gol = findViewById(R.id.gol);
         amarilla = findViewById(R.id.amarilla);
         roja = findViewById(R.id.roja);
+        mvp = findViewById(R.id.mvp);
 
         jugadoresView = new ArrayList<>();
         torneoController = new TorneoController();
@@ -103,6 +106,30 @@ public class CrearPartidoActivity extends AppCompatActivity {
             }
         });
 
+        mvp.setOnClickListener(view -> {
+            if(jugadorSeleccionado!=null){
+                agregarMvp(false);
+            }
+        });
+
+    }
+
+    private void agregarMvp(Boolean cargando) {
+        if(partido.getMvp()!=null && !cargando) {
+            Toast.makeText(this, "No se pueden seleccionar dos MVP. Elimine el anterior", Toast.LENGTH_LONG).show();
+            return;
+        }
+        ImageView mvpIV = crearView(R.drawable.ic_mvp);
+        jugadorLayout.addView(mvpIV);
+        if(!cargando){
+            partido.setMvp(jugadorSeleccionado);
+            torneoController.guardarFixture(Globals.getInstance().getFixture(), null);
+        }
+
+        mvpIV.setOnClickListener(view -> {
+            partido.setMvp(null);
+            jugadorLayout.removeView(mvpIV);
+        });
     }
 
     private void golJugador(Boolean agregarGol) {
@@ -304,7 +331,13 @@ public class CrearPartidoActivity extends AppCompatActivity {
     }
 
     private void verificarPartido() {
-        if(partido.getResultadoUno()!=0 || partido.getResultadoDos()!=0){
+        int golesUno = 0;
+        int golesDos = 0;
+        if(partido.getGolesEquipoUno()!=null)
+            golesUno = partido.getGolesEquipoUno().size();
+        if(partido.getGolesEquipoDos()!=null)
+            golesDos = partido.getGolesEquipoDos().size();
+        if(golesUno!=0 || golesDos!=0){
             if(partido.getGolesEquipoUno()!=null){
                 for(String jugadorId : partido.getGolesEquipoUno()){
                     Jugador j = equipo1.buscarJugadorPorId(jugadorId);
@@ -337,7 +370,22 @@ public class CrearPartidoActivity extends AppCompatActivity {
 
         }
 
-
+        if(partido.getMvp() != null){
+            Jugador mvp = partido.getMvp();
+            for(View v : jugadoresView){
+                if(v.getTag().equals(mvp.getId())){
+                    Jugador j = equipo1.buscarJugadorPorId(mvp.getId());
+                    if(j == null){
+                        j = equipo2.buscarJugadorPorId(mvp.getId());
+                        jugadorLayout = v.findViewById(R.id.agregarItemsDos);
+                    }
+                    else
+                        jugadorLayout = v.findViewById(R.id.agregarItemsUno);
+                    jugadorSeleccionado = j;
+                    agregarMvp(true);
+                }
+            }
+        }
 
         if(partido.getTarjetas()==null)
             return;
@@ -370,6 +418,7 @@ public class CrearPartidoActivity extends AppCompatActivity {
                 }
 
         }
+
     }
 
 }

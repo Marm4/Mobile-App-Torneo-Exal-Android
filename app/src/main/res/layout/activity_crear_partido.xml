@@ -7,304 +7,280 @@
     tools:context=".view.admin.CrearPartidoActivity"
     android:background="@color/background">
 
+
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dia"
+                style="@style/textStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jueves 29/10"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/hora"
+                style="@style/textStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginStart="5dp"
+                android:text="17:00"
+                android:textSize="13dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/escudoUno"
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:layout_height="35dp"
+                app:srcCompat="@drawable/ic_escudo"
+                tools:layout_editor_absoluteX="70dp"
+                tools:layout_editor_absoluteY="78dp" />
+
+            <TextView
+                android:id="@+id/equipoUno"
+                style="@style/textStyle"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:gravity="center"
+                android:text="Equipo1"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/vs"
+                style="@style/textStyle"
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="vs"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/equipoDos"
+                style="@style/textStyle"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Equipo2"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/escudoDos"
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
+                android:layout_height="35dp"
+                app:srcCompat="@drawable/ic_escudo"
+                tools:layout_editor_absoluteX="70dp"
+                tools:layout_editor_absoluteY="78dp" />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/dia"
+            android:id="@+id/fecha"
             style="@style/textStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Jueves 29/10"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:text="Fecha 5"
             android:textSize="15dp" />
 
-        <TextView
-            android:id="@+id/hora"
-            style="@style/textStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginStart="5dp"
-            android:text="17:00"
-            android:textSize="13dp" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/escudoUno"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_escudo"
-            tools:layout_editor_absoluteX="70dp"
-            tools:layout_editor_absoluteY="78dp" />
-
-        <TextView
-            android:id="@+id/equipoUno"
-            style="@style/textStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="7"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:text="Equipo1" />
-
-        <TextView
-            android:id="@+id/vs"
-            style="@style/textStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="2"
-            android:gravity="center"
-            android:text="vs"
-            android:textSize="13sp" />
-
-        <TextView
-            android:id="@+id/equipoDos"
-            style="@style/textStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="7"
-            android:gravity="center"
-            android:textStyle="bold"
-            android:text="Equipo2" />
-
-        <ImageView
-            android:id="@+id/escudoDos"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-
-            android:layout_weight="1"
-            app:srcCompat="@drawable/ic_escudo"
-            tools:layout_editor_absoluteX="70dp"
-            tools:layout_editor_absoluteY="78dp" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/fecha"
-        style="@style/textStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Fecha 5"
-        android:textSize="15dp"
-        android:layout_marginTop="5dp"
-        android:layout_gravity="center"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            android:layout_weight="1">
-
-
-            <TextView
-                android:id="@+id/jugadoresUno"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:text="Jugadores"
-                style="@style/textStyle"
-                android:gravity="center"
-                android:background="@drawable/view_redondeado_gris"/>
-
-            <ScrollView
-                android:layout_width="190dp"
-                android:layout_height="300dp"
-                android:layout_marginTop="10dp"
-
-                >
-                <LinearLayout
-                    android:id="@+id/llUno"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"/>
-            </ScrollView>
-
+            android:orientation="horizontal">
 
             <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/jugadoresUno"
+                    style="@style/textStyle"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/view_redondeado_gris"
+                    android:gravity="center"
+                    android:text="Jugadores" />
+
+                <ScrollView
+                    android:layout_width="190dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="10dp"
+
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/llUno"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical" />
+                </ScrollView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/jugadoresDos"
+                    style="@style/textStyle"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/view_redondeado_gris"
+                    android:gravity="center"
+                    android:text="Jugadores" />
+
+                <ScrollView
+                    android:layout_width="190dp"
+                    android:layout_height="300dp"
+                    android:layout_marginTop="10dp"
+
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/llDos"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical" />
+                </ScrollView>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
+                android:padding="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+            <ImageView
+                android:id="@+id/mvp"
+                style="@style/textStyle"
+                android:layout_width="180dp"
+                android:layout_height="35dp"
+                android:layout_gravity="center"
+                android:background="@drawable/view_redondeado_gris"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:src="@drawable/ic_mvp" />
+
+            <ImageView
                 android:id="@+id/gol"
-                android:layout_width="150dp"
+                android:layout_width="180dp"
                 android:layout_height="35dp"
-                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/view_redondeado_gris"
                 android:gravity="center"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/view_redondeado_gris">
-
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="18dp"
-                    app:srcCompat="@drawable/ic_gol" />
-
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/amarilla"
-                android:layout_width="150dp"
-                android:layout_height="35dp"
                 android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/view_redondeado_gris">
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                app:srcCompat="@drawable/ic_gol" />
 
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    app:srcCompat="@drawable/ic_amarilla" />
-
-
-                </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/roja"
-                android:layout_width="150dp"
-                android:layout_height="35dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/view_redondeado_gris">
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    app:srcCompat="@drawable/ic_roja" />
-
-
-            </LinearLayout>
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            android:gravity="end"
-            android:layout_weight="1">
-
-
-            <TextView
-                android:id="@+id/jugadoresDos"
-                android:layout_width="150dp"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="0.5"
                 android:layout_height="wrap_content"
-                android:text="Jugadores"
-                style="@style/textStyle"
-                android:gravity="center"
-                android:background="@drawable/view_redondeado_gris"/>
-
-            <ScrollView
-                android:layout_width="190dp"
-                android:layout_height="300dp"
-                android:layout_marginTop="10dp"
-
+                android:padding="10dp"
+                android:orientation="vertical"
                 >
-                <LinearLayout
-                    android:id="@+id/llDos"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"/>
-            </ScrollView>
-
-            <LinearLayout
-                android:id="@+id/golDos"
-                android:layout_width="150dp"
-                android:layout_height="35dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/view_redondeado_gris">
-
 
                 <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="18dp"
-                    app:srcCompat="@drawable/ic_gol" />
+                    android:id="@+id/roja"
+                    android:layout_width="180dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/view_redondeado_gris"
+                    android:gravity="center"
 
-
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/amarillaDos"
-                android:layout_width="150dp"
-                android:layout_height="35dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/view_redondeado_gris">
-
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
-                    app:srcCompat="@drawable/ic_amarilla" />
-
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/rojaDos"
-                android:layout_width="150dp"
-                android:layout_height="35dp"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/view_redondeado_gris">
-
-
-                <ImageView
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:orientation="horizontal"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
                     app:srcCompat="@drawable/ic_roja" />
 
+                <ImageView
+                    android:id="@+id/amarilla"
+                    android:layout_width="180dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/view_redondeado_gris"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    app:srcCompat="@drawable/ic_amarilla" />
 
             </LinearLayout>
 
-
-        </LinearLayout>
 
 
 
 
     </LinearLayout>
+
+
+</LinearLayout>
+
+
 
     <TextView
         android:layout_width="150dp"
@@ -317,25 +293,11 @@
         android:text="Agregar multimedia"
         style="@style/textStyle"
         android:layout_marginTop="15dp"
-        android:background="@drawable/view_redondeado_gris"/>
-
-        <TextView
-            android:layout_width="150dp"
-            android:layout_height="35dp"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:layout_gravity="center"
-            android:text="Seleccionar mvp"
-            style="@style/textStyle"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/view_redondeado_gris"/>
+        android:background="@drawable/view_redondeado_gris"
+        android:visibility="gone"/>
 
 
 
-
-    </LinearLayout>
 
 
 

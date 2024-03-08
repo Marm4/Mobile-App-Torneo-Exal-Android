@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.marm4.torneoexal.R;
 import com.marm4.torneoexal.adapter.VistaPartidosAdapter;
 import com.marm4.torneoexal.global.Adapters;
+import com.marm4.torneoexal.global.Globals;
 import com.marm4.torneoexal.global.Torneo;
 import com.marm4.torneoexal.model.Fixture;
 import com.marm4.torneoexal.model.Partido;
@@ -37,7 +38,7 @@ public class PartidosFragment extends Fragment {
             return;
         List<Partido> partidos = null;
         for(Fixture fixture : Torneo.getInstance().getFixtures())
-            if(fixture.getFechaNro().equals("Fecha 1"))
+            if(fixture.getId().equals(Globals.getInstance().getProximaFecha()))
                 partidos = fixture.getPartidos();
 
         Adapters.getInstance().setListPartidos(partidos);

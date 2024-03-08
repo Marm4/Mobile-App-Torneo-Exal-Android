@@ -88,11 +88,21 @@ public class Torneo {
         int puntos = 0;
         for(Fixture fixture : fixtures){
             for(Partido partido : fixture.getPartidos()){
-                if(partido.getEquipoUno().equals(id))
-                    puntos = puntos + getPuntos(partido.getResultadoUno(), partido.getResultadoDos());
+                if(compararFechas(partido.getDiaHora())){
+                    int golesUno = 0;
+                    int golesDos = 0;
+                    if(partido.getGolesEquipoUno()!=null)
+                        golesUno = partido.getGolesEquipoUno().size();
+                    if(partido.getGolesEquipoDos()!=null)
+                        golesDos = partido.getGolesEquipoDos().size();
 
-                else if(partido.getEquipoDos().equals(id))
-                    puntos = puntos + getPuntos(partido.getResultadoDos(), partido.getResultadoUno());
+                    if(partido.getEquipoUno().equals(id))
+                        puntos = puntos + getPuntos(golesUno, golesDos);
+
+                    else if(partido.getEquipoDos().equals(id))
+                        puntos = puntos + getPuntos(golesDos, golesUno);
+                }
+
             }
         }
         return String.valueOf(puntos);
@@ -203,5 +213,9 @@ public class Torneo {
 
     public void limpiarFixture(){
         fixtures.clear();
+    }
+
+    public void destroy(){
+        instance = null;
     }
 }

@@ -2,7 +2,10 @@ package com.marm4.torneoexal.controller;
 
 
 import android.util.Log;
+
+import com.marm4.torneoexal.listener.DevolverUsuarios;
 import com.marm4.torneoexal.listener.InicioSesionExito;
+import com.marm4.torneoexal.model.Usuario;
 import com.marm4.torneoexal.service.AuthService;
 
 public class AuthController {
@@ -30,8 +33,20 @@ public class AuthController {
         return authService.isUserLoggedIn();
     }
 
-    public void anonymousUser(){
-        authService.anonymousUser();
+    public void getAllUsers(DevolverUsuarios listener){
+        authService.getUsuarios(false, listener);
+    }
+
+    public void setUser(DevolverUsuarios listener){
+        authService.getUsuarios(true, listener);
+    }
+
+    public void guardarUsuario(Usuario usuario){
+        authService.guardarUsuario(usuario);
+    }
+
+    public void logOut(){
+        authService.logOut();
     }
 
 

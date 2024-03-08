@@ -41,7 +41,8 @@
 
             <ImageView
                 android:id="@+id/escudoUno"
-                android:layout_width="55dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
                 android:layout_height="35dp"
                 app:srcCompat="@drawable/ic_escudo"
                 tools:layout_editor_absoluteX="70dp"
@@ -50,7 +51,8 @@
 
             <TextView
                 android:id="@+id/equipoUno"
-                android:layout_width="115dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
                 android:layout_height="wrap_content"
                 android:text="Equipo1"
                 android:layout_gravity="center"
@@ -60,7 +62,8 @@
 
             <TextView
                 android:id="@+id/vs"
-                android:layout_width="50dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
                 android:layout_height="wrap_content"
                 android:text="vs"
                 android:textSize="13sp"
@@ -71,7 +74,8 @@
 
             <TextView
                 android:id="@+id/equipoDos"
-                android:layout_width="115dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.3"
                 android:layout_height="wrap_content"
                 android:text="Equipo2"
                 android:layout_gravity="center"
@@ -81,7 +85,8 @@
 
             <ImageView
                 android:id="@+id/escudoDos"
-                android:layout_width="55dp"
+                android:layout_width="0dp"
+                android:layout_weight="0.2"
                 android:layout_height="35dp"
                 app:srcCompat="@drawable/ic_escudo"
                 tools:layout_editor_absoluteX="70dp"

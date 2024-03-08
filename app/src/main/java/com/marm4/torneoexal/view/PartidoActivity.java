@@ -7,18 +7,23 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.marm4.torneoexal.R;
 import com.marm4.torneoexal.adapter.EstadisticasPartidoAdapter;
+import com.marm4.torneoexal.controller.AuthController;
+import com.marm4.torneoexal.controller.TorneoController;
 import com.marm4.torneoexal.global.Globals;
 import com.marm4.torneoexal.global.Torneo;
+import com.marm4.torneoexal.listener.TorneoNotificacion;
 import com.marm4.torneoexal.model.Equipo;
 import com.marm4.torneoexal.model.Jugador;
 import com.marm4.torneoexal.model.Partido;
 import com.marm4.torneoexal.model.EstadisticasPartido;
 import com.marm4.torneoexal.model.Tarjeta;
+import com.marm4.torneoexal.service.AuthService;
 import com.marm4.torneoexal.view.admin.CrearPartidoActivity;
 
 import java.io.ByteArrayInputStream;
@@ -64,9 +69,6 @@ public class PartidoActivity extends AppCompatActivity {
         recyclerViews();
     }
 
-
-
-
     private void findViews() {
         dia = findViewById(R.id.dia);
         hora = findViewById(R.id.hora);
@@ -81,15 +83,20 @@ public class PartidoActivity extends AppCompatActivity {
     }
 
     private void setListeners() {
-        editarPartido.setOnClickListener(view -> {
-            Intent intent = new Intent(PartidoActivity.this, CrearPartidoActivity.class);
-            startActivity(intent);
-        });
+        if(!Globals.getInstance().getUsuario().isAdmin())
+            editarPartido.setVisibility(View.GONE);
+        else
+            editarPartido.setOnClickListener(view -> {
+                Intent intent = new Intent(PartidoActivity.this, CrearPartidoActivity.class);
+                startActivity(intent);
+            });
     }
 
     private void setValues() {
         partido = Torneo.getInstance().getPartidoByEquipos(equipo1.getId(), equipo2.getId());
         fechaPartido = Globals.getInstance().getFixture().getFechaNro();
+
+
     }
 
     private void setViews(){
@@ -107,7 +114,15 @@ public class PartidoActivity extends AppCompatActivity {
         escudo2.setImageURI(equipo2.getEscudo());
         nombre1.setText(equipo1.getNombre());
         nombre2.setText(equipo2.getNombre());
-        vs.setText(partido.getResultadoUno() + " - " + partido.getResultadoDos());
+
+        int resultadoUno = 0;
+        int resultadoDos = 0;
+        if(partido.getGolesEquipoUno()!=null)
+            resultadoUno = partido.getGolesEquipoUno().size();
+        if(partido.getGolesEquipoDos()!=null)
+            resultadoDos = partido.getGolesEquipoDos().size();
+
+        vs.setText(resultadoUno + " - " + resultadoDos);
     }
 
     private void setEquipos(){
@@ -152,7 +167,7 @@ public class PartidoActivity extends AppCompatActivity {
                 estadisticas.add(gol);
             }
         }
-        else{
+        else if(partido.getGolesEquipoDos()!=null && partido.getGolesEquipoUno()!=null){
             for (int i = 0; i < Math.max(partido.getGolesEquipoUno().size(), partido.getGolesEquipoDos().size()); i++) {
                 EstadisticasPartido stats = new EstadisticasPartido();
                 if (i < partido.getGolesEquipoUno().size()) {

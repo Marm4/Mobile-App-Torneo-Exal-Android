@@ -1,10 +1,10 @@
 package com.marm4.torneoexal.service;
 
 import android.net.Uri;
-import android.util.Log;
+
+import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -13,6 +13,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.marm4.torneoexal.global.Adapters;
 import com.marm4.torneoexal.global.Globals;
 import com.marm4.torneoexal.global.Torneo;
 import com.marm4.torneoexal.listener.TorneoNotificacion;
@@ -20,6 +21,8 @@ import com.marm4.torneoexal.model.Equipo;
 import com.marm4.torneoexal.model.Fixture;
 import com.marm4.torneoexal.model.Jugador;
 import com.marm4.torneoexal.model.Partido;
+
+import java.util.List;
 
 public class TorneoService {
 
@@ -123,6 +126,39 @@ public class TorneoService {
                 listener.torneoNotificacion(false);
             }
         });
+    }
+
+    public void setProximoFixture(String fixtureId){
+        database.getReference("proxima-fecha").setValue(fixtureId);
+    }
+
+    public void getProximoFixture(){
+        database.getReference("proxima-fecha").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    String fixtureId = dataSnapshot.getValue(String.class);
+                    Globals.getInstance().setProximaFecha(fixtureId);
+                    Adapters.getInstance().setListPartidos(findPartidos(fixtureId));
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+    }
+
+    private List<Partido> findPartidos(String idFixture){
+        for(Fixture f : Torneo.getInstance().getFixtures()){
+            if(f.getId().equals(idFixture))
+                return f.getPartidos();
+        }
+        return null;
     }
 
     public void guardarFixture(Fixture fixture, TorneoNotificacion listener) {

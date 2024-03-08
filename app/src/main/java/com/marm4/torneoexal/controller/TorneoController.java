@@ -28,4 +28,12 @@ public class TorneoController {
     public void cargarFixture(TorneoNotificacion listener){
         equipoService.devolverFixture(listener);
     }
+
+    public void setProximaFecha(String proximaFecha){
+        equipoService.setProximoFixture(proximaFecha);
+    }
+
+    public void getProximaFecha(){
+        equipoService.getProximoFixture();
+    }
 }

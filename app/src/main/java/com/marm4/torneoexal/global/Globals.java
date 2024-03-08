@@ -1,8 +1,13 @@
 package com.marm4.torneoexal.global;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
+import com.marm4.torneoexal.controller.TorneoController;
 import com.marm4.torneoexal.model.Equipo;
 import com.marm4.torneoexal.model.Fixture;
 import com.marm4.torneoexal.model.Partido;
+import com.marm4.torneoexal.model.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,16 +15,20 @@ import java.util.Map;
 
 public class Globals {
 
+    private Usuario usuario;
     private Equipo equipo;
     private List<Equipo> equipos;
     private Partido partido;
     private Fixture fixture;
+    private SharedPreferences sharedPreferences;
+    private String proximaFecha;
 
 
     private static Globals instance;
 
     public Globals() {
         equipos = new ArrayList<>();
+        proximaFecha = "";
     }
 
     public static synchronized Globals getInstance(){
@@ -67,5 +76,35 @@ public class Globals {
 
     public void setFixture(Fixture fixture) {
         this.fixture = fixture;
+    }
+
+    public SharedPreferences getSharedPreferences(Context context){
+        if(sharedPreferences == null) {
+            sharedPreferences = context.getSharedPreferences("MiSharedPreferences", Context.MODE_PRIVATE);
+        }
+
+        return sharedPreferences;
+    }
+
+    public void setProximaFecha(String proximaFecha){
+        this.proximaFecha = proximaFecha;
+        TorneoController t = new TorneoController();
+        t.setProximaFecha(proximaFecha);
+    }
+
+    public String getProximaFecha(){
+        return proximaFecha;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public void destroy(){
+        instance = null;
     }
 }
