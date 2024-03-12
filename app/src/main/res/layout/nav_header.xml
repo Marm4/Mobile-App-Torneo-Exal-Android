@@ -3,32 +3,59 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_width="match_parent"
+    android:layout_width="250dp"
     android:layout_height="176dp"
-    android:gravity="bottom"
-    android:padding="16dp"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="45dp"
 
+    android:background="@color/background"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
-    <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:srcCompat="@drawable/ic_logo"
-        />
-    <TextView
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Torneo Exal"
-        style="@style/textStyle"
-        android:textColor="@color/textColor"
-        android:textStyle="bold"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Torneo de ex alumnos"
-        style="@style/textStyle"
-        android:textColor="@color/textColor"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp"/>
+        android:background="@drawable/view_borde_dos_colores"
+        >
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="8dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/ic_logo"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Torneo Exal"
+                style="@style/textStyle"
+                android:layout_gravity="right"
+                android:gravity="right"
+                android:textSize="13sp"
+                android:textColor="@color/textColor"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Torneo de ex alumnos"
+                android:layout_gravity="right"
+                android:textSize="11sp"
+                style="@style/textStyle"
+                android:textColor="@color/textColor"
+                />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
 
 
 </LinearLayout>

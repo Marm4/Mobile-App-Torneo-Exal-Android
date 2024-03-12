@@ -3,10 +3,12 @@ package com.marm4.torneoexal.adapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,8 +19,8 @@ import com.marm4.torneoexal.global.Globals;
 import com.marm4.torneoexal.model.Equipo;
 import com.marm4.torneoexal.model.Fixture;
 import com.marm4.torneoexal.model.Usuario;
-import com.marm4.torneoexal.view.ClubActivity;
-import com.marm4.torneoexal.view.FixtureActivity;
+import com.marm4.torneoexal.view.club.ClubActivity;
+import com.marm4.torneoexal.view.fixture.FixtureActivity;
 
 import java.util.List;
 
@@ -35,7 +37,7 @@ public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.ViewHolder> 
     @NonNull
     @Override
     public ListaAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_equipo, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_lista, parent, false);
         return new ListaAdapter.ViewHolder(view, context);
     }
 
@@ -141,7 +143,12 @@ public class ListaAdapter extends RecyclerView.Adapter<ListaAdapter.ViewHolder> 
                     textoParaMostrar.setText("Mostrar en fixture");
                 }
 
-                escudo.setVisibility(View.GONE);
+                escudo.setImageDrawable(escudo.getContext().getDrawable(R.drawable.ic_fixture));
+                int sizeInPixels = (int) TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP, 25, escudo.getContext().getResources().getDisplayMetrics());
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(sizeInPixels, sizeInPixels);
+
+                escudo.setLayoutParams(params);
                 nombre.setText(fixture.getFechaNro());
                 view.setOnClickListener(view1 -> {
                     Globals.getInstance().setFixture(fixture);

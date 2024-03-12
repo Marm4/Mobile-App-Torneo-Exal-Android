@@ -65,11 +65,6 @@ public class TablaAdapter extends RecyclerView.Adapter<TablaAdapter.ViewHolder> 
         private ImageView escudo;
         private TextView nombre;
         private TextView partidos;
-        private TextView ganados;
-        private TextView empatados;
-        private TextView derrotas;
-        private TextView golesF;
-        private TextView golesC;
         private TextView golesDif;
         private TextView puntos;
 
@@ -80,11 +75,6 @@ public class TablaAdapter extends RecyclerView.Adapter<TablaAdapter.ViewHolder> 
             escudo = view.findViewById(R.id.escudo);
             nombre = view.findViewById(R.id.nombre);
             partidos = view.findViewById(R.id.partidos);
-            ganados = view.findViewById(R.id.ganados);
-            empatados = view.findViewById(R.id.empatados);
-            derrotas = view.findViewById(R.id.derrota);
-            golesF = view.findViewById(R.id.golesF);
-            golesC = view.findViewById(R.id.golesC);
             golesDif = view.findViewById(R.id.golesDif);
             puntos = view.findViewById(R.id.puntos);
 
@@ -93,19 +83,11 @@ public class TablaAdapter extends RecyclerView.Adapter<TablaAdapter.ViewHolder> 
 
         public void bind(EquipoTabla e) {
             int posicionInt = Integer.parseInt(e.getPosicion());
-            if((posicionInt%2) != 0){
-                ll.setBackgroundDrawable(ll.getContext().getDrawable(R.color.background));
-            }
 
             posicion.setText(e.getPosicion());
             escudo.setImageURI(e.getEquipo().getEscudo());
             nombre.setText(e.getEquipo().getNombre());
             partidos.setText(e.getPartidos());
-            ganados.setText(e.getGanados());
-            empatados.setText(e.getEmpatados());
-            derrotas.setText(e.getPerdidos());
-            golesF.setText(e.getGolesFavor());
-            golesC.setText(e.getGolesContra());
             golesDif.setText(e.getDiferenciaGoles());
             puntos.setText(e.getPuntos());
         }

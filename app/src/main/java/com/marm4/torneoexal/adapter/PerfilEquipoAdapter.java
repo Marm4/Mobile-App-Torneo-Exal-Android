@@ -64,6 +64,10 @@ public class PerfilEquipoAdapter extends RecyclerView.Adapter<PerfilEquipoAdapte
         private TextView item2;
         private TextView item3;
         private TextView item4;
+        private TextView item5;
+        private TextView item6;
+        private TextView item7;
+        private LinearLayout ll7;
         private ImageView imageView;
         private TextView eliminarJugador;
         private TextView cambiarNombre;
@@ -78,10 +82,11 @@ public class PerfilEquipoAdapter extends RecyclerView.Adapter<PerfilEquipoAdapte
             item2 = view.findViewById(R.id.itemDos);
             item3 = view.findViewById(R.id.itemTres);
             item4 = view.findViewById(R.id.itemCuatro);
+            item5 = view.findViewById(R.id.itemCinco);
+            item6 = view.findViewById(R.id.itemSeis);
+            item7 = view.findViewById(R.id.itemSiete);
+            ll7 = view.findViewById(R.id.llSiete);
             imageView = view.findViewById(R.id.imageView);
-            eliminarJugador = view.findViewById(R.id.eliminarJugador);
-            cambiarNombre = view.findViewById(R.id.cambiarNombre);
-            ll = view.findViewById(R.id.layoutOpciones);
         }
 
         public void bind(Object object) {
@@ -91,28 +96,6 @@ public class PerfilEquipoAdapter extends RecyclerView.Adapter<PerfilEquipoAdapte
                 item2.setText(String.valueOf(jugador.getGoles()));
                 item3.setText(Torneo.getInstance().tarjetasAmarillasJugador(jugador));
                 item4.setText(Torneo.getInstance().tarjetasRojasJugador(jugador));
-
-
-                /*imageView.setOnClickListener(view -> {
-                    if(ll.getVisibility() == View.VISIBLE)
-                        ll.setVisibility(View.GONE);
-                    else
-                        ll.setVisibility(View.VISIBLE);
-                });
-
-                cambiarNombre.setOnClickListener(view -> {
-                    if(cambiarNombre.getText().equals("Guardar")){
-                        cambiarNombre.setText("Cambiar nombre");
-                    }
-
-                    else
-                        cambiarNombre.setText("Guardar");
-                    if(item1.getParent()!=null)
-                        cambiarNombreET = convertirAEditText(item1);
-                    else{
-                        convertirATextView(cambiarNombreET);
-                    }
-                });*/
 
             }
             else if (object instanceof Map){
@@ -125,19 +108,25 @@ public class PerfilEquipoAdapter extends RecyclerView.Adapter<PerfilEquipoAdapte
                 }
                 Equipo equipoAux = equipoUnoODos(partido);
                 Equipo equipo = Globals.getInstance().getEquipo();
-                item1.setText(valor);
-                item2.setText(equipoAux.getNombre());
+                item5.setText(valor);
+                item6.setText(equipoAux.getNombre());
                 if(!Torneo.getInstance().compararFechas(partido.getEquipoUno())){
                     if(equipo.getId().equals(partido.getEquipoUno()))
-                        item3.setText(partido.getResultadoUno() + " - " + partido.getResultadoDos());
+                        item7.setText(partido.getResultadoUno() + " - " + partido.getResultadoDos());
                     else
-                        item3.setText(partido.getResultadoDos() + " - " + partido.getResultadoUno());
+                        item7.setText(partido.getResultadoDos() + " - " + partido.getResultadoUno());
                 }
                 else
-                    item3.setText("Por jugar");
+                    item7.setText("Por jugar");
 
-
-                item4.setVisibility(View.GONE)  ;
+                item5.setVisibility(View.VISIBLE);
+                item6.setVisibility(View.VISIBLE);
+                item7.setVisibility(View.VISIBLE);
+                ll7.setVisibility(View.VISIBLE);
+                item1.setVisibility(View.GONE);
+                item2.setVisibility(View.GONE);
+                item3.setVisibility(View.GONE);
+                item4.setVisibility(View.GONE);
                 imageView.setVisibility(View.GONE);
             }
         }
@@ -149,40 +138,6 @@ public class PerfilEquipoAdapter extends RecyclerView.Adapter<PerfilEquipoAdapte
                 return Torneo.getInstance().getEquipoId(partido.getEquipoUno());
         }
 
-
-        private EditText convertirAEditText(TextView textView){
-
-            CharSequence texto = textView.getText();
-            int id = textView.getId();
-            ViewGroup padre = (ViewGroup) textView.getParent();
-            int indice = padre.indexOfChild(textView);
-
-            ViewGroup.LayoutParams layoutParams = textView.getLayoutParams();
-
-            padre.removeView(textView);
-
-            EditText editText = new EditText(textView.getContext());
-            editText.setId(id);
-            editText.setText(texto);
-
-            editText.setLayoutParams(layoutParams);
-
-            padre.addView(editText, indice);
-
-            editText.requestFocus();
-            return editText;
-        }
-
-        private void convertirATextView(EditText et){
-            CharSequence texto = et.getText();
-            int id = et.getId();
-            ViewGroup padre = (ViewGroup) et.getParent();
-            int indice = padre.indexOfChild(et);
-            padre.removeView(et);
-            item1.setId(id);
-            item1.setText(texto);
-            padre.addView(item1, indice);
-        }
     }
 }
 

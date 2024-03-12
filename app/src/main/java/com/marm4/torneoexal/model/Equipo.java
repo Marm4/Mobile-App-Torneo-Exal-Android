@@ -12,6 +12,7 @@ public class Equipo {
     private String urlEscudo;
     private List<Jugador> jugadores;
     private List<Partido> partidos;
+    private List<Integer> colores;
 
     public Equipo() {
     }
@@ -21,6 +22,16 @@ public class Equipo {
         this.escudo = escudo;
         this.jugadores = jugadores;
         this.partidos = partidos;
+    }
+
+    public Equipo(String id, String nombre, Uri escudo, String urlEscudo, List<Jugador> jugadores, List<Partido> partidos, List<Integer> colores) {
+        this.id = id;
+        this.nombre = nombre;
+        this.escudo = escudo;
+        this.urlEscudo = urlEscudo;
+        this.jugadores = jugadores;
+        this.partidos = partidos;
+        this.colores = colores;
     }
 
     public String getNombre() {
@@ -89,5 +100,13 @@ public class Equipo {
                 return j;
         }
         return null;
+    }
+
+    public List<Integer> getColores() {
+        return colores;
+    }
+
+    public void setColores(List<Integer> colores) {
+        this.colores = colores;
     }
 }

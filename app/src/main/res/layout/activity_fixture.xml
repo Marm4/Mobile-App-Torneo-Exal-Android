@@ -4,34 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".view.FixtureActivity">
 
+    android:background="@drawable/view_top_title"
+    tools:context=".view.fixture.FixtureActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:orientation="vertical">
     <TextView
         android:id="@+id/fecha"
         style="@style/textStyle"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/view_borde_redondeado"
-        android:gravity="center"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fecha"
-        app:layout_constraintVertical_bias="0.022" />
+        android:gravity="center"
+        android:text="Fecha nro"
+        android:paddingTop="10dp"
+        android:textColor="@color/background"
+        android:textSize="16sp"
+        />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

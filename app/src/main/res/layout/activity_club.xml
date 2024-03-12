@@ -1,81 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ClubActivity"
-    android:background="@color/background">
-
-    <TextView
-        android:id="@+id/nombre"
-        style="@style/textStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="10dp"
-        android:text="Equipo 1"
-        android:textColor="@color/textColor"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/escudo"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre"
-        app:srcCompat="@drawable/ic_escudo" />
+    tools:context=".view.club.ClubActivity"
+    android:background="@color/background"
+    android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="252dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/escudo"
-        app:layout_constraintTop_toBottomOf="@+id/nombre"
-        >
+        android:orientation="vertical"
+        android:paddingBottom="14dp"
+        android:background="@drawable/view_top_title">
 
-        <LinearLayout
-            android:layout_width="84dp"
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/nombre"
+            style="@style/textStyle"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="10dp"
+            android:text="Equipo 1"
+            android:textColor="@color/background"
+            android:textSize="17sp"
+            android:textStyle="bold"
 
-            <TextView
-                android:id="@+id/puntos"
-                style="@style/textStyle"
-                android:layout_width="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.011"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.8"/>
+
+        <TextView
+            android:id="@+id/modificar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/view_redondeado_variation"
+            android:padding="10dp"
+            android:text="Modificar"
+
+            android:textColor="@color/background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.937"
+            app:layout_constraintStart_toEndOf="@+id/nombre"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="10dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:background="@drawable/view_redondeado_blanco"
+        >
+        <ImageView
+            android:id="@+id/escudo"
+            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nombre"
+            app:srcCompat="@drawable/ic_escudo" />
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:orientation="vertical">
 
-                android:text="0"
-                android:textColor="@color/textColor"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/puntos"
+                    style="@style/textStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="@color/textColor"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView5"
-                style="@style/textStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="-5dp"
-                android:text="puntos"
-                android:textColor="@color/textColor"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/textView5"
+                    style="@style/textStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-5dp"
+                    android:text="puntos"
+                    android:textColor="@color/textColor"
+                    android:textSize="14sp" />
 
-        </LinearLayout>
+            </LinearLayout>
+
+
+
 
         <LinearLayout
-            android:layout_width="84dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/goles"
@@ -102,10 +146,12 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="84dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_gravity="center">
 
             <TextView
                 android:id="@+id/partidos"
@@ -132,13 +178,14 @@
 
         </LinearLayout>
 
+    </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toTopOf="@+id/eliminar"
@@ -151,37 +198,42 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
                 android:orientation="horizontal">
 
                 <TextView
                     style="@style/textStyle"
-                    android:layout_width="100dp"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-
+                    android:layout_weight="1.47"
                     android:layout_marginStart="20dp"
                     android:text="JUGADORES"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <ImageView
                     android:id="@+id/gol"
-                    android:layout_width="80dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="18dp"
+
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/ic_gol" />
 
                 <ImageView
                     android:id="@+id/amarilla"
-                    android:layout_width="80dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/ic_amarilla" />
 
                 <ImageView
                     android:id="@+id/roja"
-                    android:layout_width="80dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
                     app:srcCompat="@drawable/ic_roja" />
@@ -191,44 +243,50 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewUno"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.4"
                 android:layout_margin="10dp"
+
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.1"
                 android:orientation="horizontal">
 
                 <TextView
                     style="@style/textStyle"
-                    android:layout_width="100dp"
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginStart="20dp"
                     android:text="PARTIDOS"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
                     style="@style/textStyle"
-                    android:layout_width="80dp"
-
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="VS"
-
-                    android:textSize="12sp"
+                    android:layout_gravity="center"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView
                     style="@style/textStyle"
-                    android:layout_width="100dp"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:gravity="center"
+                    android:gravity="right"
+                    android:layout_marginEnd="20dp"
                     android:text="RESULTADO"
-                    android:textSize="12sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -236,8 +294,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerViewDos"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="0.4"
                 android:layout_margin="10dp"
+
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         </LinearLayout>
@@ -263,4 +323,4 @@
         android:visibility="gone"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -21,22 +21,22 @@
             android:name=".view.admin.GestionarAdminActivity"
             android:exported="false" />
         <activity
-            android:name=".view.FixtureActivity"
+            android:name=".view.fixture.FixtureActivity"
             android:exported="false" />
         <activity
-            android:name=".view.admin.CrearPartidoActivity"
+            android:name=".view.partido.CrearPartidoActivity"
             android:exported="false" />
         <activity
-            android:name=".view.PartidoActivity"
+            android:name=".view.partido.PartidoActivity"
             android:exported="false" />
         <activity
-            android:name=".view.ClubActivity"
+            android:name=".view.club.ClubActivity"
             android:exported="false" />
         <activity
-            android:name=".view.admin.fixture.VerFixtureActivity"
+            android:name=".view.fixture.VerFixtureActivity"
             android:exported="false" />
         <activity
-            android:name=".view.admin.club.VerClubesActivity"
+            android:name=".view.club.VerClubesActivity"
             android:exported="false" />
         <activity
             android:name=".view.auth.IniciarSesionActivity"
@@ -48,10 +48,10 @@
             android:name=".view.admin.AdminActivity"
             android:exported="false" />
         <activity
-            android:name=".view.admin.club.CrearClubActivity"
+            android:name=".view.club.CrearClubActivity"
             android:exported="false" />
         <activity
-            android:name=".view.admin.fixture.CrearFixtureActivity"
+            android:name=".view.fixture.CrearFixtureActivity"
             android:exported="false" />
         <activity
             android:name=".view.MainActivity"

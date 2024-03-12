@@ -23,12 +23,9 @@
         android:title=""
         android:checkable="false"
         android:enabled="false"/>
-
     <group>
-        <item
-            android:title="Datos"
-            android:checkable="false"
-            android:enabled="false"/>
+
+
         <item
             android:id="@+id/equiposActivity"
             android:title="Equipos"
@@ -59,10 +56,14 @@
         android:checkable="false"
         android:enabled="false"/>
 
+
+
     <item
         android:id="@+id/logOut"
         android:title="Cerrar sesion"
+        android:icon="@drawable/ic_logout"
         />
+
 
 
 </menu>

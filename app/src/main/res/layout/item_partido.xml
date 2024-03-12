@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingBottom="20dp"
     >
 
     <LinearLayout
@@ -11,14 +12,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp">
+        android:layout_margin="5dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:background="@drawable/view_redondeado_blanco"
+        >
         <TextView
             android:id="@+id/fecha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Jueves 29/02"
             style="@style/textStyle"
+            android:visibility="gone"
             />
 
         <TextView
@@ -29,25 +34,18 @@
             android:layout_marginTop="2dp"
             android:layout_marginStart="7dp"
             style="@style/textStyle"
-            android:textSize="12sp"/>
+            android:textSize="12sp"
+            android:visibility="gone"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="2dp"
-            android:paddingBottom="10dp">
 
-            <ImageView
-                android:id="@+id/escudoUno"
-                android:layout_width="0dp"
-                android:layout_weight="0.2"
-                android:layout_height="35dp"
-                app:srcCompat="@drawable/ic_escudo"
-                tools:layout_editor_absoluteX="70dp"
-                tools:layout_editor_absoluteY="78dp"
-                />
+            >
+
+
 
             <TextView
                 android:id="@+id/equipoUno"
@@ -55,21 +53,50 @@
                 android:layout_weight="0.3"
                 android:layout_height="wrap_content"
                 android:text="Equipo1"
+                android:textSize="14sp"
+                android:textStyle="bold"
                 android:layout_gravity="center"
-                android:gravity="center"
+                android:gravity="right"
+                android:textColor="@color/azulOscuro"
+                android:paddingEnd="2dp"
                 style="@style/textStyle"
                />
+
+            <ImageView
+                android:id="@+id/escudoUno"
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:layout_height="35dp"
+                app:srcCompat="@drawable/ic_escudo"
+                tools:layout_editor_absoluteX="70dp"
+                tools:layout_editor_absoluteY="78dp"
+                android:layout_marginEnd="2dp"
+                />
 
             <TextView
                 android:id="@+id/vs"
                 android:layout_width="0dp"
-                android:layout_weight="0.1"
+                android:layout_weight="0.15"
                 android:layout_height="wrap_content"
                 android:text="vs"
-                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textSize="15sp"
                 android:layout_gravity="center"
                 android:gravity="center"
+                android:textColor="@color/background"
                 style="@style/textStyle"
+                android:background="@drawable/view_redondeado_azul"
+                />
+
+            <ImageView
+                android:id="@+id/escudoDos"
+                android:layout_width="0dp"
+                android:layout_weight="0.1"
+                android:layout_height="35dp"
+                app:srcCompat="@drawable/ic_escudo"
+                tools:layout_editor_absoluteX="70dp"
+                tools:layout_editor_absoluteY="78dp"
+                android:layout_marginStart="2dp"
                 />
 
             <TextView
@@ -78,20 +105,16 @@
                 android:layout_weight="0.3"
                 android:layout_height="wrap_content"
                 android:text="Equipo2"
+                android:textColor="@color/azulOscuro"
+                android:textSize="14sp"
+                android:textStyle="bold"
                 android:layout_gravity="center"
-                android:gravity="center"
+                android:gravity="left"
+                android:layout_marginStart="2dp"
                 style="@style/textStyle"
                 />
 
-            <ImageView
-                android:id="@+id/escudoDos"
-                android:layout_width="0dp"
-                android:layout_weight="0.2"
-                android:layout_height="35dp"
-                app:srcCompat="@drawable/ic_escudo"
-                tools:layout_editor_absoluteX="70dp"
-                tools:layout_editor_absoluteY="78dp"
-                />
+
 
         </LinearLayout>
     </LinearLayout>

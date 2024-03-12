@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.PartidoActivity"
+    tools:context=".view.partido.PartidoActivity"
     android:background="@color/background">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+
         android:orientation="vertical"
         app:layout_constraintBottom_toTopOf="@+id/editar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,116 +23,130 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:background="@drawable/view_top_title">
 
             <TextView
-                android:id="@+id/dia"
+                android:id="@+id/fecha"
                 style="@style/textStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Jueves 29/10"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:text="Fecha 5"
+                android:textColor="@color/background"
                 android:textSize="15dp" />
 
+            <LinearLayout
+                android:id="@+id/ll"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="5dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:background="@drawable/view_redondeado_blanco"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+
+                    >
+
+
+
+                    <TextView
+                        android:id="@+id/equipoUno"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.3"
+                        android:layout_height="wrap_content"
+                        android:text="Equipo1"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:gravity="right"
+                        android:textColor="@color/azulOscuro"
+                        android:paddingEnd="2dp"
+                        style="@style/textStyle"
+                        />
+
+                    <ImageView
+                        android:id="@+id/escudoUno"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.1"
+                        android:layout_height="35dp"
+                        app:srcCompat="@drawable/ic_escudo"
+                        tools:layout_editor_absoluteX="70dp"
+                        tools:layout_editor_absoluteY="78dp"
+                        android:layout_marginEnd="2dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/vs"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.15"
+                        android:layout_height="wrap_content"
+                        android:text="vs"
+                        android:textStyle="bold"
+                        android:textSize="15sp"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:textColor="@color/background"
+                        style="@style/textStyle"
+                        android:background="@drawable/view_redondeado_azul"
+                        />
+
+                    <ImageView
+                        android:id="@+id/escudoDos"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.1"
+                        android:layout_height="35dp"
+                        app:srcCompat="@drawable/ic_escudo"
+                        tools:layout_editor_absoluteX="70dp"
+                        tools:layout_editor_absoluteY="78dp"
+                        android:layout_marginStart="2dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/equipoDos"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.3"
+                        android:layout_height="wrap_content"
+                        android:text="Equipo2"
+                        android:textColor="@color/azulOscuro"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:layout_gravity="center"
+                        android:gravity="left"
+                        android:layout_marginStart="2dp"
+                        style="@style/textStyle"
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
             <TextView
-                android:id="@+id/hora"
                 style="@style/textStyle"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginStart="5dp"
-                android:text="17:00"
-                android:textSize="13dp" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/escudoUno"
-                android:layout_width="0dp"
-                android:layout_weight="0.2"
-                android:layout_height="35dp"
-                app:srcCompat="@drawable/ic_escudo"
-                tools:layout_editor_absoluteX="70dp"
-                tools:layout_editor_absoluteY="78dp" />
-
-            <TextView
-                android:id="@+id/equipoUno"
-                style="@style/textStyle"
-                android:layout_width="0dp"
-                android:layout_weight="0.3"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Equipo1"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/vs"
-                style="@style/textStyle"
-                android:layout_width="0dp"
-                android:layout_weight="0.1"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="vs"
-                android:textSize="13sp" />
-
-            <TextView
-                android:id="@+id/equipoDos"
-                style="@style/textStyle"
-                android:layout_width="0dp"
-                android:layout_weight="0.3"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Equipo2"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/escudoDos"
-                android:layout_width="0dp"
-                android:layout_weight="0.2"
-                android:layout_height="35dp"
-                app:srcCompat="@drawable/ic_escudo"
-                tools:layout_editor_absoluteX="70dp"
-                tools:layout_editor_absoluteY="78dp" />
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/fecha"
-            style="@style/textStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:text="Fecha 5"
-            android:textSize="15dp" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                style="@style/textStyle"
-                android:layout_width="0dp"
                 android:layout_height="30dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="5dp"
                 android:layout_weight="1"
-                android:background="@drawable/view_redondeado_gris"
                 android:gravity="center"
-                android:text="Estadisticas del partido"
-                android:textSize="15dp" />
+                android:text="Estadisticas"
+                android:textColor="@color/background"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
+
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -170,6 +184,7 @@
         android:gravity="center"
         android:text="Editar partido"
         android:textSize="15dp"
+        android:textColor="@color/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

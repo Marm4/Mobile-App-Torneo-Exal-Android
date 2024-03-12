@@ -5,199 +5,278 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".view.admin.club.CrearClubActivity">
+    tools:context=".view.club.CrearClubActivity">
 
 
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/textView3"
+            style="@style/textStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nuevo equipo"
-            style="@style/textStyle"
-            android:textSize="15sp"
-            android:paddingTop="10dp"
+            android:background="@drawable/view_top_title"
             android:gravity="center"
-            />
+            android:paddingTop="15dp"
+            android:paddingBottom="4dp"
+            android:text="Crear equipo"
+            android:textColor="@color/background"
+            android:textSize="19sp"
+            android:textStyle="bold" />
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="15dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-
-            <TextView
-                style="@style/textStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Nombre"
-                android:textStyle="normal"
-                app:layout_constraintEnd_toEndOf="@+id/nombre"
-                app:layout_constraintHorizontal_bias="0.037"
-                app:layout_constraintStart_toStartOf="@+id/nombre"
-                app:layout_constraintTop_toTopOf="@id/nombre" />
-
-            <EditText
-                android:id="@+id/nombre"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginTop="20dp"
-                android:paddingBottom="10dp"
-                android:background="@drawable/view_borde_redondeado"
-                android:paddingStart="10dp"
-                android:paddingTop="25dp"
-                android:textSize="12sp"
-                android:textColorHint="@color/textColorHint"
-                android:hint="Escribe aquí"
-                style="@style/textStyle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:imeOptions="actionNext"
-                android:singleLine="true"/>
-
-
-
-            <TextView
-                style="@style/textStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Escudo"
-                android:textStyle="normal"
-                app:layout_constraintEnd_toEndOf="@+id/escudo"
-                app:layout_constraintHorizontal_bias="0.037"
-                app:layout_constraintStart_toStartOf="@+id/escudo"
-                app:layout_constraintTop_toTopOf="@id/escudo" />
-
-
-            <TextView
-                android:id="@+id/escudo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginTop="20dp"
-                android:paddingBottom="10dp"
-                android:background="@drawable/view_borde_redondeado"
-                android:paddingStart="10dp"
-                android:paddingTop="39dp"
-                android:textSize="12sp"
-                android:text="Seleccione un archivo"
-                android:textColor="@color/azulVinculo"
-                style="@style/textStyle"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/nombre" />
-
-
-            <ImageView
-                android:id="@+id/escudoIV"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintBottom_toBottomOf="@+id/escudo"
-                app:layout_constraintEnd_toEndOf="@+id/escudo"
-                app:layout_constraintTop_toTopOf="@+id/escudo"
-                app:layout_constraintVertical_bias="0.45" />
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/guardar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintVertical_bias="0.0">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginTop="20dp"
-                android:orientation="vertical"
-                android:background="@drawable/view_borde_redondeado"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/escudo">
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical">
 
                 <TextView
                     style="@style/textStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Jugadores"
-                    android:layout_marginStart="10dp"
-                    android:textStyle="normal" />
+                    android:layout_marginBottom="5dp"
+                    android:text="Nombre"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/nombre"
+                    app:layout_constraintHorizontal_bias="0.037"
+                    app:layout_constraintStart_toStartOf="@+id/nombre"
+                    app:layout_constraintTop_toTopOf="@id/nombre" />
 
-
-                <EditText
-                    android:id="@+id/jugadores"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:paddingTop="15dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:textSize="12sp"
-                    android:background="@color/background"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/nombre"
+                        style="@style/textStyle"
+                        android:layout_height="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.8"
+                        android:background="@drawable/view_redondeado_gris"
+                        android:hint="Nombre"
+                        android:imeOptions="actionNext"
+                        android:paddingStart="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:singleLine="true"
+                        android:textColorHint="@color/textColorHint"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:id="@+id/nombreCheck"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_gravity="right"
+                        android:layout_weight="0.15"
+                        android:paddingStart="24dp"
+                        android:src="@drawable/ic_circle_empty" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/view_redondeado_gris" />
+
+                <TextView
                     style="@style/textStyle"
-                    android:textColorHint="@color/textColorHint"
-                    android:hint="Escribe aquí"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.495"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:imeOptions="actionNext"
-                    android:singleLine="true"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Escudo o colores"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/nombre"
+                    app:layout_constraintHorizontal_bias="0.037"
+                    app:layout_constraintStart_toStartOf="@+id/nombre"
+                    app:layout_constraintTop_toTopOf="@id/nombre" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.8"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/colorUno"
+                            style="@style/textStyle"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.2"
+                            android:background="@drawable/view_redondeado_gris"
+                            android:gravity="center"
+                            android:hint="Color uno"
+                            android:imeOptions="actionNext"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:singleLine="true"
+                            android:textColorHint="@color/textColorHint"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/colorDos"
+                            style="@style/textStyle"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="20dp"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.2"
+                            android:background="@drawable/view_redondeado_gris"
+                            android:gravity="center"
+                            android:hint="Color dos"
+                            android:imeOptions="actionNext"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:singleLine="true"
+                            android:textColorHint="@color/textColorHint"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:id="@+id/escudo"
+                            android:layout_width="0dp"
+                            android:layout_height="38dp"
+                            android:layout_weight="0.15"
+                            android:background="@drawable/view_redondeado_gris"
+                            android:paddingTop="2dp"
+                            android:paddingBottom="2dp"
+                            android:src="@drawable/ic_escudo" />
+
+
+                    </LinearLayout>
+
+
+                    <ImageView
+                        android:id="@+id/escudoCheck"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_gravity="right"
+                        android:layout_weight="0.15"
+                        android:paddingStart="24dp"
+                        android:src="@drawable/ic_circle_empty" />
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/view_redondeado_gris" />
+
+                <TextView
+                    style="@style/textStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Jugadores"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/nombre"
+                    app:layout_constraintHorizontal_bias="0.037"
+                    app:layout_constraintStart_toStartOf="@+id/nombre"
+                    app:layout_constraintTop_toTopOf="@id/nombre" />
+
 
                 <LinearLayout
                     android:id="@+id/jugadoresLL"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"/>
-
-
-                <ImageView
-                    android:id="@+id/agregarJugadores"
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="8dp"
-                    app:srcCompat="@drawable/ic_agregar" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="5dp">
+
+                    <LinearLayout
+                        android:id="@+id/agregarJugadorLL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        >
+
+                        <TextView
+                            android:id="@+id/agregarJugadoresTV"
+                            style="@style/textStyle"
+                            android:layout_height="wrap_content"
+                            android:layout_width="0dp"
+                            android:layout_weight="0.8"
+                            android:background="@drawable/view_redondeado_variation"
+                            android:gravity="center"
+                            android:imeOptions="actionNext"
+                            android:paddingStart="10dp"
+                            android:paddingTop="5dp"
+                            android:paddingBottom="5dp"
+                            android:singleLine="true"
+                            android:text="Agregar jugador"
+                            android:textColor="@color/background"
+                            android:textColorHint="@color/textColorHint"
+                            android:textSize="16sp" />
+
+                        <ImageView
+                            android:id="@+id/agregarJugadoresIV"
+                            android:layout_width="0dp"
+                            android:layout_height="38dp"
+                            android:layout_gravity="right"
+                            android:layout_weight="0.15"
+                            android:paddingStart="24dp"
+                            android:src="@drawable/ic_agregar_jugador" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
 
 
             </LinearLayout>
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                android:id="@+id/guardar"
-                style="@style/textStyle"
-                android:layout_width="match_parent"
-                android:layout_marginStart="30dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginTop="20dp"
-                android:layout_height="40dp"
-                android:background="@color/primary"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:text="Crear equipo"
-                android:textSize="15sp" />
-
-
-        </LinearLayout>
-
         </ScrollView>
 
+        <TextView
+            android:id="@+id/guardar"
+            style="@style/textStyle"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="16dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/primary"
+            android:gravity="center"
+            android:text="Guardar"
+            android:textSize="16sp"
+            android:textColor="@color/background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"

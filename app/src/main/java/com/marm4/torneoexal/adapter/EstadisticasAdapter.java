@@ -1,10 +1,10 @@
 package com.marm4.torneoexal.adapter;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,12 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.marm4.torneoexal.R;
 import com.marm4.torneoexal.model.Jugador;
 import com.marm4.torneoexal.model.Tarjeta;
+import com.marm4.torneoexal.model.items.EstadisticaJugador;
 
 import java.util.List;
 
 public class EstadisticasAdapter extends RecyclerView.Adapter<EstadisticasAdapter.ViewHolder> {
 
-    private List<Jugador> jugadores;
+    private List<EstadisticaJugador> jugadores;
     public EstadisticasAdapter() {
 
     }
@@ -39,7 +40,7 @@ public class EstadisticasAdapter extends RecyclerView.Adapter<EstadisticasAdapte
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void setList(List<Jugador> jugadores) {
+    public void setList(List<EstadisticaJugador> jugadores) {
         this.jugadores = jugadores;
         notifyDataSetChanged();
     }
@@ -55,45 +56,36 @@ public class EstadisticasAdapter extends RecyclerView.Adapter<EstadisticasAdapte
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView jugador;
-        private TextView item1;
-        private TextView item2;
-
+        private TextView goles;
+        private TextView amarillas;
+        private TextView rojas;
+        private TextView mvp;
+        private TextView posicion;
+        private ImageView logo;
 
         public ViewHolder(@NonNull View view) {
             super(view);
 
             jugador = view.findViewById(R.id.jugador);
-            item1 = view.findViewById(R.id.item1);
-            item2 = view.findViewById(R.id.item2);
+            goles = view.findViewById(R.id.goles);
+            amarillas = view.findViewById(R.id.amarillas);
+            rojas = view.findViewById(R.id.rojas);
+            mvp = view.findViewById(R.id.mvps);
+            posicion = view.findViewById(R.id.posicion);
+            logo = view.findViewById(R.id.logo);
 
         }
 
-        public void bind(Jugador j) {
-            jugador.setText(j.getNombre());
-            item2.setVisibility(View.INVISIBLE);
-            if(j.getId().equals("tarjetas")){
-                item1.setText(getCantidadTarjetas(j, true));
-                item2.setVisibility(View.VISIBLE);
-                item2.setText(getCantidadTarjetas(j, false));
-            }
-            else
-                item1.setText(String.valueOf(j.getGoles()));
+        public void bind(EstadisticaJugador j) {
+        jugador.setText(j.getNombre());
+        goles.setText(j.getGoles());
+        amarillas.setText(j.getAmarillas());
+        rojas.setText(j.getRojas());
+        mvp.setText(j.getMvp());
+        if(j.getLogoEquipo()!=null)
+            logo.setImageURI(j.getLogoEquipo());
+        posicion.setText(j.getPosicion());
 
-        }
-
-        private String getCantidadTarjetas(Jugador j, boolean amarilla){
-            int tarjetas = 0;
-            if(j.getTarjetas().isEmpty())
-                return String.valueOf(tarjetas);
-
-            for(Tarjeta t : j.getTarjetas()){
-                if(amarilla && t.getAmarilla())
-                    tarjetas ++;
-                else if(!amarilla && !t.getAmarilla())
-                    tarjetas++;
-
-            }
-            return String.valueOf(tarjetas);
-        }
     }
+}
 }

@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingBottom="12dp"
-    android:background="@color/background">
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:background="@color/gris"
+   >
 
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/view_redondeado_gris"
         android:orientation="vertical"
         >
 
@@ -23,55 +24,118 @@
 
             android:orientation="horizontal"
             android:paddingTop="7dp"
-
             android:paddingBottom="7dp"
             tools:layout_editor_absoluteX="10dp">
 
             <TextView
                 android:id="@+id/itemUno"
                 style="@style/textStyle"
-                android:layout_width="90dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-
+                android:layout_weight="1.5"
                 android:layout_gravity="center"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="10dp"
                 android:text="JUGADORES"
-                android:textSize="12sp"
+                android:textSize="14sp"
 
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/itemDos"
                 style="@style/textStyle"
-                android:layout_width="80dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="1"
-                android:textSize="12sp"
+                android:textSize="14sp"
+                android:textColor="@color/textColor"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/itemTres"
                 style="@style/textStyle"
-                android:layout_width="80dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
+
                 android:text="1"
-                android:textSize="12sp"
+                android:textSize="14sp"
+                android:textColor="@color/textColor"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/itemCuatro"
                 style="@style/textStyle"
-                android:layout_width="80dp"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+
+                android:text="1"
+                android:textSize="14sp"
+                android:textColor="@color/textColor"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/itemCinco"
+                style="@style/textStyle"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="left"
+                android:text="1"
+                android:textSize="14sp"
+                android:textColor="@color/textColor"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/itemSeis"
+                style="@style/textStyle"
+                android:visibility="gone"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:text="1"
-                android:textSize="12sp"
+                android:textSize="14sp"
+                android:textColor="@color/textColor"
                 android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/llSiete"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:layout_marginEnd="20dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/itemSiete"
+                    style="@style/textStyle"
+                    android:visibility="gone"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textSize="14sp"
+                    android:textColor="@color/background"
+                    android:textStyle="bold"
+                    android:background="@drawable/view_redondeado_azul"/>
+
+            </LinearLayout>
+
+
 
 
             <ImageView
@@ -85,33 +149,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/layoutOpciones"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/cambiarNombre"
-                style="@style/textStyle"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"
-                android:text="Cambiar nombre"
-                android:layout_marginStart="19dp"
-                android:textSize="12sp"
-                android:textColor="@color/azulVinculo" />
-
-            <TextView
-                android:id="@+id/eliminarJugador"
-                style="@style/textStyle"
-                android:layout_width="190dp"
-                android:layout_height="wrap_content"
-                android:gravity="end"
-                android:text="Eliminar jugador"
-                android:paddingEnd="19dp"
-                android:textSize="12sp"
-                android:textColor="@color/rojoEliminar" />
-        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

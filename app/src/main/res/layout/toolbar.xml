@@ -4,24 +4,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
     android:layout_width="match_parent"
+    android:background="@drawable/view_redondeado_blanco"
     android:layout_height="50dp"
-    android:background="@color/background"
-    android:textColor="@color/background"
+    android:layout_margin="10dp"
     >
-
-    <TextView
-        android:id="@+id/toolbar_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="invisible" />
-
-
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="10dp"
         android:src="@drawable/ic_logo"
         android:layout_gravity="right"
         app:layout_constraintBottom_toBottomOf="parent"

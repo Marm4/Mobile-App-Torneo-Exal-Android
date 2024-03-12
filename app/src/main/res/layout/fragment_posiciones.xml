@@ -8,100 +8,74 @@
 
   <LinearLayout
       android:layout_width="match_parent"
-      android:layout_height="25dp"
+      android:layout_height="30dp"
       android:background="@drawable/view_redondeado_gris"
-      android:layout_margin="8dp">
+      android:layout_marginStart="4dp"
+      android:layout_marginEnd="4dp">
+
+      <TextView
+          android:layout_width="0dp"
+          android:layout_weight="0.15"
+          android:layout_height="match_parent"
+          android:text="Pos"
+          android:gravity="center|left"
+          android:paddingStart="20dp"
+          android:textStyle="bold"
+
+          style="@style/textStyle"
+          android:textSize="14dp"
+          android:textColor="@color/azulOscuro"/>
 
       <TextView
           android:layout_width="0dp"
           android:layout_weight="0.4"
           android:layout_height="match_parent"
           android:text="Equipo"
-          android:gravity="center"
+          android:gravity="center|left"
+          android:paddingStart="20dp"
           android:textStyle="bold"
+          android:textColor="@color/azulOscuro"
+          android:textSize="14dp"
           style="@style/textStyle"
-          android:textSize="12dp"/>
+
+         />
+
+
+
+
 
       <TextView
           android:layout_width="0dp"
-          android:layout_weight="0.1"
+          android:layout_weight="0.15"
           android:layout_height="match_parent"
-          android:text="P"
+          android:text="PJ"
           android:gravity="center"
           android:textStyle="bold"
           style="@style/textStyle"
-          android:textSize="12dp"/>
+          android:textSize="14dp"
+          android:textColor="@color/azulOscuro"/>
 
       <TextView
           android:layout_width="0dp"
-          android:layout_weight="0.1"
-          android:layout_height="match_parent"
-          android:text="G"
-          android:gravity="center"
-          android:textStyle="bold"
-          style="@style/textStyle"
-          android:textSize="12dp"/>
-
-      <TextView
-          android:layout_width="0dp"
-          android:layout_weight="0.1"
-          android:layout_height="match_parent"
-          android:text="E"
-          android:gravity="center"
-          android:textStyle="bold"
-          style="@style/textStyle"
-          android:textSize="12dp"/>
-
-      <TextView
-          android:layout_width="0dp"
-          android:layout_weight="0.1"
-
-          android:layout_height="match_parent"
-          android:text="D"
-          android:gravity="center"
-          android:textStyle="bold"
-          style="@style/textStyle"
-          android:textSize="12dp"/>
-
-      <TextView
-          android:layout_width="0dp"
-          android:layout_weight="0.1"
-          android:layout_height="match_parent"
-          android:text="GF"
-          android:gravity="center"
-          android:textStyle="bold"
-          style="@style/textStyle"
-          android:textSize="12dp"/>
-
-      <TextView
-          android:layout_width="0dp"
-          android:layout_weight="0.1"
-          android:layout_height="match_parent"
-          android:text="GC"
-          android:gravity="center"
-          android:textStyle="bold"
-          style="@style/textStyle"
-          android:textSize="12dp"/>
-
-      <TextView
-          android:layout_width="0dp"
-          android:layout_weight="0.1"
+          android:layout_weight="0.15"
           android:layout_height="match_parent"
           android:text="DIF"
           android:gravity="center"
           android:textStyle="bold"
           style="@style/textStyle"
-          android:textSize="12dp"/>
+          android:textSize="14dp"
+          android:textColor="@color/azulOscuro"/>
 
       <TextView
           android:layout_width="0dp"
-          android:layout_weight="0.1"
+          android:layout_weight="0.15"
           android:layout_height="match_parent"
           android:text="PTS"
           android:gravity="center"
           android:textStyle="bold"
           style="@style/textStyle"
-          android:textSize="12dp"/>
+          android:textSize="14dp"
+          android:textColor="@color/azulOscuro"/>
 
   </LinearLayout>
 
@@ -111,7 +85,7 @@
         android:layout_height="match_parent"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="8dp" />
 
 </FrameLayout>

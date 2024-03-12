@@ -5,129 +5,186 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".view.admin.fixture.CrearFixtureActivity">
+    tools:context=".view.fixture.CrearFixtureActivity">
 
-    <ScrollView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="15dp"
-        app:layout_constraintBottom_toTopOf="@id/guardar"
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+           >
 
             <TextView
                 android:id="@+id/titulo"
                 style="@style/textStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/view_top_title"
                 android:gravity="center"
-                android:paddingTop="10dp"
-                android:text="Fixture"
-                android:textSize="15sp" />
+                android:paddingTop="15dp"
+                android:paddingBottom="4dp"
+                android:text="Crear fixture"
+                android:textColor="@color/background"
+                android:textSize="19sp"
+                android:textStyle="bold" />
+
+            <TextView
+                style="@style/textStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="Fecha"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/nombre"
+                app:layout_constraintHorizontal_bias="0.037"
+                app:layout_constraintStart_toStartOf="@+id/nombre"
+                app:layout_constraintTop_toTopOf="@id/nombre" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                >
+
+                <TextView
+                    android:id="@+id/fecha"
+                    style="@style/textStyle"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.8"
+                    android:background="@drawable/view_redondeado_gris"
+                    android:hint="Seleccione una fecha"
+                    android:paddingStart="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:singleLine="true"
+                    android:textColorHint="@color/textColorHint"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/nombreCheck"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_gravity="right"
+                    android:layout_weight="0.15"
+                    android:paddingStart="24dp"
+                    android:src="@drawable/ic_circle_empty" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/view_redondeado_gris" />
+
+            <ScrollView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="60dp"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:orientation="vertical">
+
 
 
             <TextView
                 style="@style/textStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fecha"
-                android:textStyle="normal"
-                app:layout_constraintEnd_toEndOf="@+id/fecha"
+                android:layout_marginBottom="5dp"
+                android:text="Datos"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/nombre"
                 app:layout_constraintHorizontal_bias="0.037"
-                app:layout_constraintStart_toStartOf="@+id/fecha"
-                app:layout_constraintTop_toTopOf="@id/fecha" />
+                app:layout_constraintStart_toStartOf="@+id/nombre"
+                app:layout_constraintTop_toTopOf="@id/nombre" />
 
-
-            <TextView
-                android:id="@+id/fecha"
-                style="@style/textStyle"
-                android:layout_width="350dp"
-                android:layout_height="70dp"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/view_borde_redondeado"
-                android:gravity="center_vertical"
-                android:paddingStart="10dp"
-                android:paddingTop="25dp"
-                android:hint="Seleccione una fecha"
-                android:textColorHint="@color/azulVinculo"
-                android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/titulo" />
 
             <LinearLayout
-                android:id="@+id/partidoLL"
-                android:layout_width="350dp"
+                android:id="@+id/partidosLL"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:background="@drawable/view_borde_redondeado"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fecha">
-
+                android:orientation="vertical"
+                android:layout_margin="10dp">
 
                 <LinearLayout
-                    android:id="@+id/equiposLL"
+                    android:id="@+id/agregarPartidoLL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    >
 
                     <TextView
-                        android:id="@+id/equiposTV"
+                        android:id="@+id/agregarPartidoTV"
                         style="@style/textStyle"
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:text="Equipos y horario" />
-
-
+                        android:layout_width="0dp"
+                        android:layout_weight="0.8"
+                        android:background="@drawable/view_redondeado_variation"
+                        android:gravity="center"
+                        android:imeOptions="actionNext"
+                        android:paddingStart="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
+                        android:singleLine="true"
+                        android:text="Agregar partido"
+                        android:textColor="@color/background"
+                        android:textColorHint="@color/textColorHint"
+                        android:textSize="16sp" />
 
                     <ImageView
-                        android:id="@+id/agregarIV"
-                        android:layout_width="match_parent"
-                        android:layout_height="15dp"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="10dp"
-                        app:srcCompat="@drawable/ic_agregar" />
-
+                        android:id="@+id/agregarPartidosIV"
+                        android:layout_width="0dp"
+                        android:layout_height="38dp"
+                        android:layout_gravity="right"
+                        android:layout_weight="0.15"
+                        android:paddingStart="24dp"
+                        android:src="@drawable/ic_agregar_jugador" />
 
                 </LinearLayout>
 
 
             </LinearLayout>
+                </LinearLayout>
+            </ScrollView>
 
 
 
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
 
 
-    </ScrollView>
+
 
     <TextView
         android:id="@+id/guardar"
         style="@style/textStyle"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginBottom="24dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:background="@color/primary"
-        android:elevation="8dp"
         android:gravity="center"
-        android:text="Crear fixture"
-        android:textSize="15sp"
+        android:text="Guardar"
+        android:textSize="16sp"
+        android:textColor="@color/background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout

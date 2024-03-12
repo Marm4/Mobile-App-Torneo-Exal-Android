@@ -11,8 +11,10 @@
         <item name="android:windowExitAnimation">@anim/slide_out</item>
     </style>
 
-    <style name="appTheme" parent="Theme.Material3.DayNight.NoActionBar">
-
+    <style name="forToolBar" parent="textStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
 </resources>

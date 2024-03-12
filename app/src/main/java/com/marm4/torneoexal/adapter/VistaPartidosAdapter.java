@@ -18,7 +18,7 @@ import com.marm4.torneoexal.global.Globals;
 import com.marm4.torneoexal.global.Torneo;
 import com.marm4.torneoexal.model.Equipo;
 import com.marm4.torneoexal.model.Partido;
-import com.marm4.torneoexal.view.PartidoActivity;
+import com.marm4.torneoexal.view.partido.PartidoActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -131,8 +131,12 @@ public class VistaPartidosAdapter extends RecyclerView.Adapter<VistaPartidosAdap
 
             if(compararFechas(partido.getDiaHora()))
                 vs.setText(golesEquipoUno + " - " + golesEquipoDos);
-            else
-                vs.setText("vs");
+            else{
+                String horaString = hora.getText().toString();
+                vs.setText(horaString);
+                vs.setBackgroundDrawable(vs.getContext().getDrawable(R.drawable.view_borde_redondeado));
+            }
+
 
 
             ll.setOnClickListener(view -> {

@@ -16,8 +16,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="75dp"
+    android:background="@drawable/view_top_title">
         <include layout="@layout/toolbar"/>
+
+</LinearLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -27,7 +32,7 @@
 
 
     <com.google.android.material.navigation.NavigationView
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="match_parent"
         android:id="@+id/nav_view"
         android:layout_gravity="start"
@@ -35,8 +40,9 @@
         app:menu="@menu/nav_menu"
         app:itemIconTint="@color/textColor"
         app:itemTextColor="@color/textColor"
-        android:background="@color/gris"
+        android:background="@color/background"
         app:itemActiveIndicatorStyle="@null"
+
         />
 
     <LinearLayout
@@ -44,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@color/background"
+        android:background="@drawable/view_top_title"
         android:visibility="gone"
         >
 
@@ -68,15 +74,3 @@
     </LinearLayout>
 
 </androidx.drawerlayout.widget.DrawerLayout>
-
-<!--
-/*<androidx.appcompat.widget.Toolbar
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:id="@+id/toolbar"
-            android:elevation="4dp"
-            android:background="@color/textColor"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-            android:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>*/
-
--->

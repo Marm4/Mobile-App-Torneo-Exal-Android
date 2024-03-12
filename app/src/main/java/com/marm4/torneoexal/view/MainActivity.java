@@ -7,12 +7,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.TextAppearanceSpan;
+import android.text.style.TypefaceSpan;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -40,10 +42,11 @@ import com.marm4.torneoexal.model.Equipo;
 import com.marm4.torneoexal.model.Fixture;
 import com.marm4.torneoexal.model.Partido;
 import com.marm4.torneoexal.model.Usuario;
+import com.marm4.torneoexal.service.AuthService;
 import com.marm4.torneoexal.utility.DescargarImagenUtility;
 import com.marm4.torneoexal.view.admin.AdminActivity;
-import com.marm4.torneoexal.view.admin.club.VerClubesActivity;
-import com.marm4.torneoexal.view.admin.fixture.VerFixtureActivity;
+import com.marm4.torneoexal.view.club.VerClubesActivity;
+import com.marm4.torneoexal.view.fixture.VerFixtureActivity;
 import com.marm4.torneoexal.view.auth.IniciarSesionActivity;
 import com.marm4.torneoexal.view.nav.EstadisticasFragment;
 import com.marm4.torneoexal.view.nav.PartidosFragment;
@@ -168,28 +171,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if(Globals.getInstance().getSharedPreferences(this).getBoolean("view initialized", false))
             return;
 
-
+        getWindow().setBackgroundDrawableResource(R.drawable.view_top_title);
         pantallaCarga.setVisibility(View.GONE);
 
         navView = findViewById(R.id.nav_view);
         navView.setVisibility(View.VISIBLE);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        setTitle("Posiciones");
+
         navView.setItemBackgroundResource(R.drawable.navigation_item);
         navView.setItemTextColor(colorState());
-
         drawerLayout = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-        if(!Globals.getInstance().getUsuario().isAdmin()){
+
+        if(Globals.getInstance().getUsuario()==null ){
+            AuthService authService = new AuthService();
+            authService.getUsuarios(true, new DevolverUsuarios() {
+                @Override
+                public void devolverUsuarios(List<Usuario> usuarios) {
+                    if(!Globals.getInstance().getUsuario().isAdmin()) {
+                        MenuItem adminMenuItem = navView.getMenu().findItem(R.id.adminActivity);
+                        adminMenuItem.setVisible(false);
+                    }
+                }
+            });
+        }
+        else if(!Globals.getInstance().getUsuario().isAdmin()){
             MenuItem adminMenuItem = navView.getMenu().findItem(R.id.adminActivity);
             adminMenuItem.setVisible(false);
         }
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PosicionesFragment()).commit();
-        navView.setCheckedItem(R.id.partidosFragment);
+        navView.setCheckedItem(R.id.posicionesFragment);
         navView.setNavigationItemSelectedListener(this);
         navView.bringToFront();
         setSharedPreferences(true);
@@ -220,12 +236,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerLayout.closeDrawer(GravityCompat.START);
-        if(item.getItemId() == R.id.partidosFragment)
+        if(item.getItemId() == R.id.partidosFragment){
             replaceFragment(new PartidosFragment());
-        else if(item.getItemId() == R.id.posicionesFragment)
+            setTitle("Partidos");
+        }
+
+        else if(item.getItemId() == R.id.posicionesFragment){
             replaceFragment(new PosicionesFragment());
-        else if(item.getItemId() == R.id.estadisticasFragment)
+            setTitle("Posiciones");
+        }
+
+        else if(item.getItemId() == R.id.estadisticasFragment){
             replaceFragment(new EstadisticasFragment());
+            setTitle("Estadisticas");
+        }
+
         else if(item.getItemId() == R.id.adminActivity){
             Intent intent = new Intent(MainActivity.this, AdminActivity.class);
             startActivity(intent);
@@ -266,5 +291,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         backPressedTime = System.currentTimeMillis();
     }
 
+
+    public void setTitle(String title){
+        SpannableString spannableString = new SpannableString(title);
+        spannableString.setSpan(new TypefaceSpan("sf_regular.ttf"), 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        TextAppearanceSpan textAppearanceSpan = new TextAppearanceSpan(this, R.style.forToolBar);
+        spannableString.setSpan(textAppearanceSpan, 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+        getSupportActionBar().setTitle(spannableString);
+    }
 
 }

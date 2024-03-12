@@ -23,6 +23,7 @@ import com.marm4.torneoexal.model.Jugador;
 import com.marm4.torneoexal.model.Partido;
 
 import java.util.List;
+import java.util.UUID;
 
 public class TorneoService {
 
@@ -52,8 +53,14 @@ public class TorneoService {
                 i++;
             }
         }
-        else
+        else {
             equipoId = equipo.getId();
+            for(Jugador jugador : equipo.getJugadores())
+                if(jugador.getId() == null)
+                    jugador.setId(generarIdUnico(equipo));
+
+
+        }
 
         String nombreImagen = equipoId.toString() + ".jpg";
         StorageReference storageRef = storage.getReference().child("escudos/" + nombreImagen);
@@ -101,6 +108,29 @@ public class TorneoService {
 
         }
 
+    }
+
+    public String generarIdUnico(Equipo equipo) {
+        String idUnico;
+        boolean idUnicoExiste;
+
+        do {
+            UUID uuid = UUID.randomUUID();
+            idUnico = uuid.toString();
+            idUnicoExiste = idUnicoYaExiste(idUnico, equipo);
+        } while (idUnicoExiste);
+
+        return idUnico;
+    }
+
+    private boolean idUnicoYaExiste(String id, Equipo equipo) {
+        // Verificar si el ID ya existe en la lista de jugadores
+        for (Jugador jugador : equipo.getJugadores()) {
+            if (jugador.getId() != null && jugador.getId().equals(id)) {
+                return true; // El ID ya existe
+            }
+        }
+        return false;
     }
 
     public void devolverEquipos(TorneoNotificacion listener) {

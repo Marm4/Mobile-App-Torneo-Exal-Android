@@ -4,51 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.admin.club.VerClubesActivity"
+    tools:context=".view.club.VerClubesActivity"
     android:background="@color/background">
 
-    <TextView
-        android:id="@+id/nombre"
-        style="@style/textStyle"
+    <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="10dp"
-        android:text="Equipos"
-        android:textSize="17sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical"
+        android:background="@drawable/view_top_title">
 
-    <EditText
-        android:id="@+id/buscar"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/view_borde_redondeado"
-        android:hint="Buscar por nombre"
-        android:paddingStart="12dp"
-        android:textColorHint="@color/textColorHint"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@id/recyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre"
-        app:layout_constraintVertical_bias="1.0" />
+        <TextView
+            android:id="@+id/nombre"
+            style="@style/textStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="10dp"
+            android:text="Equipos"
+            android:layout_gravity="center"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:textColor="@color/background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/buscar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/view_redondeado_blanco"
+            android:hint="Buscar por nombre"
+            android:paddingStart="12dp"
+            android:textColorHint="@color/textColorHint"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@id/recyclerView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/nombre"
+            app:layout_constraintVertical_bias="1.0" />
+
+    </LinearLayout>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="7dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre" />
+        app:layout_constraintTop_toBottomOf="@+id/ll"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="0dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

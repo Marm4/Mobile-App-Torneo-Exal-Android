@@ -9,36 +9,32 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import com.marm4.torneoexal.R;
 import com.marm4.torneoexal.adapter.EstadisticasAdapter;
-import com.marm4.torneoexal.adapter.VistaPartidosAdapter;
-import com.marm4.torneoexal.global.Adapters;
 import com.marm4.torneoexal.global.Torneo;
 import com.marm4.torneoexal.model.Equipo;
 import com.marm4.torneoexal.model.Fixture;
 import com.marm4.torneoexal.model.Jugador;
 import com.marm4.torneoexal.model.Partido;
+import com.marm4.torneoexal.model.Tarjeta;
+import com.marm4.torneoexal.model.items.EstadisticaJugador;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class EstadisticasFragment extends Fragment {
-
-    private LinearLayout gol;
-    private LinearLayout tarjetas;
-    private LinearLayout mvp;
-    private TextView item1;
-    private TextView item2;
     private View root;
-    private RecyclerView recyclerView;
     private EstadisticasAdapter adapter;
+    private List<EstadisticaJugador> jugadoresList;
+
+    private ImageView goles;
+    private ImageView amarillas;
+    private ImageView rojas;
+    private ImageView mvps;
 
 
 
@@ -51,155 +47,156 @@ public class EstadisticasFragment extends Fragment {
     }
 
     private void initUI() {
-        findViews();
-        listeners();
+        findJugadores();
         recyclerView();
 
-    }
-    private void findViews() {
-        gol = root.findViewById(R.id.llGol);
-        tarjetas = root.findViewById(R.id.llTarjetas);
-        mvp = root.findViewById(R.id.llMvp);
-        recyclerView = root.findViewById(R.id.recyclerView);
-        item1 = root.findViewById(R.id.item1);
-        item2 = root.findViewById(R.id.item2);
+        findViews();
+        listeners();
 
+
+    }
+
+    private void findViews() {
+        goles = root.findViewById(R.id.goles);
+        amarillas = root.findViewById(R.id.amarillas);
+        rojas = root.findViewById(R.id.rojas);
+        mvps = root.findViewById(R.id.mvps);
     }
 
     private void listeners() {
-        gol.setOnClickListener(view -> {
-            changeBackground(gol);
-            setListAdapter(getListOf(true));
-            item1.setText("G");
-            item2.setVisibility(View.INVISIBLE);
+        goles.setOnClickListener(view -> {
+            setListAdapter("goles");
+            setBackgroundColor(goles);
         });
 
-        tarjetas.setOnClickListener(view -> {
-            changeBackground(tarjetas);
-            setListAdapter(getListOf(false));
-            item1.setText("A");
-            item2.setVisibility(View.VISIBLE);
-            item2.setText("R");
+        amarillas.setOnClickListener(view -> {
+            setListAdapter("amarillas");
+            setBackgroundColor(amarillas);
         });
 
-        mvp.setOnClickListener(view -> {
-            changeBackground(mvp);
-            setListAdapter(getListOfMvp());
-            item1.setText("MVP");
-            item2.setVisibility(View.INVISIBLE);
+        rojas.setOnClickListener(view -> {
+            setListAdapter("rojas");
+            setBackgroundColor(rojas);
+        });
+
+        mvps.setOnClickListener(view -> {
+            setListAdapter("mvps");
+            setBackgroundColor(mvps);
         });
     }
 
-    private List<Jugador> getListOfMvp() {
-        List<Fixture> fixtures = Torneo.getInstance().getFixtures();
-        List<Jugador> jugadores = new ArrayList<>();
-        if(fixtures.isEmpty())
-            return jugadores;
+    private void setBackgroundColor(ImageView iv) {
+        goles.setBackgroundColor(getResources().getColor(R.color.gris));
+        amarillas.setBackgroundColor(getResources().getColor(R.color.gris));
+        rojas.setBackgroundColor(getResources().getColor(R.color.gris));
+        mvps.setBackgroundColor(getResources().getColor(R.color.gris));
 
-        Map<String, Jugador> mapaJugadores = new HashMap<>();
+        iv.setBackgroundColor(getResources().getColor(R.color.grisOscuro));
+    }
+
+    private void findJugadores() {
+        jugadoresList = new ArrayList<>();
+        if(Torneo.getInstance().getEquipos()==null)
+            return;
+        for(Equipo e : Torneo.getInstance().getEquipos()){
+            if(e.getJugadores()!=null)
+                for(Jugador j : e.getJugadores()){
+                    EstadisticaJugador estadisticaJugador = findAllStats(j);
+                    if(e.getEscudo()!=null)
+                        estadisticaJugador.setLogoEquipo(e.getEscudo());
+                    jugadoresList.add(estadisticaJugador);
+                }
+        }
+    }
+
+    private EstadisticaJugador findAllStats(Jugador jugador) {
+        EstadisticaJugador estadisticaJugador = new EstadisticaJugador();
+        estadisticaJugador.setNombre(jugador.getNombre());
+        estadisticaJugador.setAmarillas(getTarjetas(jugador, true));
+        estadisticaJugador.setRojas(getTarjetas(jugador, false));
+        estadisticaJugador.setGoles(String.valueOf(jugador.getGoles()));
+        estadisticaJugador.setMvp(getMvp(jugador));
+
+        return estadisticaJugador;
+    }
+
+    private String getTarjetas(Jugador jugador, Boolean amarilla) {
+        int tarjetas = 0;
+        if(jugador.getTarjetas()!=null){
+            for(Tarjeta t : jugador.getTarjetas()){
+                if(amarilla && t.getAmarilla())
+                    tarjetas ++;
+                else if(!amarilla && !t.getAmarilla())
+                    tarjetas++;
+            }
+        }
+        return String.valueOf(tarjetas);
+    }
+
+
+    private String getMvp(Jugador j) {
+        List<Fixture> fixtures = Torneo.getInstance().getFixtures();
+        int mvp = 0;
+        if(fixtures.isEmpty())
+            return String.valueOf(mvp);
 
         for (Fixture f : fixtures) {
             if (!f.getPartidos().isEmpty()) {
                 for (Partido p : f.getPartidos()) {
-                    if (p.getMvp() != null) {
-                        String nombreMvp = p.getMvp().getNombre();
-                        if (mapaJugadores.containsKey(nombreMvp)) {
-                            Jugador jugadorExistente = mapaJugadores.get(nombreMvp);
-                            jugadorExistente.addGol();
-                        } else {
-                            Jugador nuevoJugador = new Jugador();
-                            nuevoJugador.setId("mvp");
-                            nuevoJugador.setNombre(nombreMvp);
-                            nuevoJugador.addGol();
-                            mapaJugadores.put(nombreMvp, nuevoJugador);
-                        }
+                    if (p.getMvp() != null && p.getMvp().getId().equals(j.getId())) {
+                        mvp++;
                     }
                 }
             }
         }
-        return new ArrayList<>(mapaJugadores.values());
+        return String.valueOf(mvp);
     }
 
 
-    private void changeBackground(LinearLayout ll){
-        if(ll.getBackground().equals(getResources().getDrawable(R.drawable.view_redondeado)))
-            return;
-
-        ll.setBackground(getResources().getDrawable(R.drawable.view_redondeado));
-
-        if(ll.equals(gol)){
-            tarjetas.setBackground(getResources().getDrawable(R.drawable.view_redondeado_gris));
-            mvp.setBackground(getResources().getDrawable(R.drawable.view_redondeado_gris));
-        }
-        else if(ll.equals(tarjetas)){
-            gol.setBackground(getResources().getDrawable(R.drawable.view_redondeado_gris));
-            mvp.setBackground(getResources().getDrawable(R.drawable.view_redondeado_gris));
-        }
-        else {
-            gol.setBackground(getResources().getDrawable(R.drawable.view_redondeado_gris));
-            tarjetas.setBackground(getResources().getDrawable(R.drawable.view_redondeado_gris));
-        }
-
-
-    }
-
-    private List<Jugador> getListOf(Boolean goles){
-        if(Torneo.getInstance().getEquipos().isEmpty())
-            return null;
-
-        List<Jugador> jugadores = new ArrayList<>();
-
-        for(Equipo e : Torneo.getInstance().getEquipos()){
-            for(Jugador j : e.getJugadores()){
-                Jugador jugador = new Jugador();
-                jugador.setNombre(j.getNombre());
-                if(goles){
-                    jugador.setId("goles");
-                    jugador.setGoles(j.getGoles());
-                    jugadores.add(jugador);
-                }
-                else{
-                    if(j.getTarjetas()!=null){
-                        jugador.setId("tarjetas");
-                        jugador.setTarjetas(j.getTarjetas());
-                        jugadores.add(jugador);
-                    }
-                }
-            }
-        }
-        return jugadores;
-    }
-
-    private List<Jugador> orderList(List<Jugador> jugadores, String orderBy){
-        Collections.sort(jugadores, new Comparator<Jugador>() {
+    private List<EstadisticaJugador> orderList(List<EstadisticaJugador> jugadores, String orderBy){
+        Collections.sort(jugadores, new Comparator<EstadisticaJugador>() {
             @Override
-            public int compare(Jugador jugador1, Jugador jugador2) {
-                if (orderBy.equals("tarjetas"))
-                    return Integer.compare(jugador2.getTarjetas().size(), jugador1.getTarjetas().size());
+            public int compare(EstadisticaJugador jugador1, EstadisticaJugador jugador2) {
+                if (orderBy.equals("amarillas"))
+                    return Integer.compare(Integer.parseInt(jugador2.getAmarillas()), Integer.parseInt(jugador1.getAmarillas()));
+                else if(orderBy.equals("rojas"))
+                    return Integer.compare(Integer.parseInt(jugador2.getRojas()), Integer.parseInt(jugador1.getRojas()));
+                else if(orderBy.equals("goles"))
+                    return Integer.compare(Integer.parseInt(jugador2.getGoles()), Integer.parseInt(jugador1.getGoles()));
                 else
-                    return Integer.compare(jugador2.getGoles(), jugador1.getGoles());
+                    return Integer.compare(Integer.parseInt(jugador2.getMvp()), Integer.parseInt(jugador1.getMvp()));
+
             }
         });
-        return jugadores.subList(0, Math.min(jugadores.size(), 10));
+
+        List<EstadisticaJugador> returnList = jugadores.subList(0, Math.min(jugadores.size(), 10));
+        int i = 1;
+        for(EstadisticaJugador jugador : returnList){
+            jugador.setPosicion(String.valueOf(i));
+            i++;
+        }
+
+        return returnList;
     }
 
 
-    private void setListAdapter(List<Jugador> jugadores) {
-        if(jugadores == null)
+    private void setListAdapter(String orderBy) {
+        if(jugadoresList == null)
             return;
-        if(jugadores.isEmpty() || jugadores.size() == 1)
-            adapter.setList(jugadores);
+        if(jugadoresList.isEmpty() || jugadoresList.size() == 1)
+            adapter.setList(jugadoresList);
         else
-            adapter.setList(orderList(jugadores, jugadores.get(0).getId()));
+            adapter.setList(orderList(jugadoresList, orderBy));
     }
 
 
 
 
     private void recyclerView() {
+        RecyclerView recyclerView = root.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new EstadisticasAdapter();
         recyclerView.setAdapter(adapter);
-        setListAdapter(getListOf(true));
+        setListAdapter("goles");
     }
 }

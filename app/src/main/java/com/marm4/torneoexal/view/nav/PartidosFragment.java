@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.marm4.torneoexal.R;
 import com.marm4.torneoexal.adapter.VistaPartidosAdapter;
@@ -23,6 +24,7 @@ import java.util.List;
 public class PartidosFragment extends Fragment {
     private View root;
     private RecyclerView recyclerView;
+    private TextView fechaNro;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,13 +40,20 @@ public class PartidosFragment extends Fragment {
             return;
         List<Partido> partidos = null;
         for(Fixture fixture : Torneo.getInstance().getFixtures())
-            if(fixture.getId().equals(Globals.getInstance().getProximaFecha()))
+            if(fixture.getId().equals(Globals.getInstance().getProximaFecha())) {
                 partidos = fixture.getPartidos();
+                fechaNro.setText(fixture.getFechaNro());
+            }
 
         Adapters.getInstance().setListPartidos(partidos);
     }
 
     private void initUI() {
+        fechaNro = root.findViewById(R.id.fechaNro);
+        initRecycler();
+    }
+
+    private void initRecycler() {
         recyclerView = root.findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         VistaPartidosAdapter adapter = new VistaPartidosAdapter();

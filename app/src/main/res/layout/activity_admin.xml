@@ -7,19 +7,29 @@
     android:background="@color/background"
     tools:context=".view.admin.AdminActivity">
 
-    <TextView
-        android:id="@+id/tv"
-        style="@style/textStyle"
+    <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="left"
-        android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:text="Panel administrador"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@drawable/view_top_title">
+
+        <TextView
+            android:id="@+id/tv"
+            style="@style/textStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Panel administrador"
+            android:textColor="@color/background"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,90 +39,69 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv"
-        app:layout_constraintVertical_bias="0.112">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+        app:layout_constraintVertical_bias="0.0">
 
 
-        <TextView
+        <LinearLayout
             android:id="@+id/agregarEquipo"
-            style="@style/textStyle"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"
-            android:background="@drawable/view_redondeado_gris"
-            android:gravity="center"
-            android:text="Agregar equipos"
-            android:textSize="15sp"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/view_redondeado_gris">
 
-        <TextView
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+
+                app:srcCompat="@drawable/ic_agregar_jugador" />
+
+            <TextView
+                style="@style/textStyle"
+                android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+                android:gravity="left|center"
+                android:layout_gravity="center"
+                android:text="Agregar equipos"
+                android:layout_marginStart="10dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/agregarFixture"
-            style="@style/textStyle"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"
-            android:background="@drawable/view_redondeado_gris"
-            android:gravity="center"
-            android:text="Agregar fixture"
-            android:textSize="15sp"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/view_redondeado_gris">
 
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
 
-        <TextView
-            android:id="@+id/verEquipo"
-            style="@style/textStyle"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"
-            android:background="@drawable/view_redondeado_gris"
-            android:gravity="center"
-            android:text="Ver equipos"
-            android:textSize="15sp"
-            android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+                app:srcCompat="@drawable/ic_agregar_jugador" />
 
-        <TextView
-            android:id="@+id/verFixture"
-            style="@style/textStyle"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"
-            android:background="@drawable/view_redondeado_gris"
-            android:gravity="center"
-            android:text="Ver fixtures"
-            android:textSize="15sp"
-            android:textStyle="normal"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                style="@style/textStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left|center"
+                android:layout_gravity="center"
+                android:text="Agregar fixture"
+                android:layout_marginStart="10dp"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/admins"
-            style="@style/textStyle"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_margin="20dp"
-            android:background="@drawable/view_redondeado_gris"
-            android:gravity="center"
-            android:text="Gestionar Administradores"
-            android:textSize="15sp"
-            android:textStyle="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.947" />
-
+        </LinearLayout>
 
     </LinearLayout>
 

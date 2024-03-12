@@ -18,7 +18,7 @@ public class DescargarImagenUtility {
     public static void getEscudo(File directory, Context context, String fileName, String urlImagen, Boolean retorno, DescargaExito listener){
         File file = new File(directory, fileName);
         Log.i("DownloaderUtility", "New DownloaderUtility create");
-        if(urlImagen == null){
+        if(urlImagen == null || urlImagen.isEmpty()){
             listener.descargaExito(null, retorno);
             return;
         }

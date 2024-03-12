@@ -7,154 +7,185 @@
     android:background="@color/background"
     tools:context=".view.auth.RegistrarseActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="60dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_logo" />
-
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView3"
         style="@style/textStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="Torneo Exal"
-        android:textSize="25sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
-
-    <TextView
-        android:id="@+id/mensaje"
-        style="@style/textStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:textStyle="normal"
-        app:layout_constraintBottom_toTopOf="@+id/scrollview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:visibility="gone"/>
-
-    <ScrollView
-        android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.163">
+        android:background="@drawable/view_top_title"
+        android:gravity="center"
+        android:paddingTop="15dp"
+        android:paddingBottom="4dp"
+        android:text="Iniciar sesion"
+        android:textColor="@color/background"
+        android:textSize="19sp"
+        android:textStyle="bold" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        >
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
 
-        <TextView
-            style="@style/textStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            app:layout_constraintEnd_toEndOf="@+id/email"
-            app:layout_constraintHorizontal_bias="0.037"
-            app:layout_constraintStart_toStartOf="@+id/email"
-            app:layout_constraintTop_toTopOf="@+id/email" />
+    <TextView
+        style="@style/textStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:text="Email"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/nombre"
+        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintStart_toStartOf="@+id/nombre"
+        app:layout_constraintTop_toTopOf="@id/nombre" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <EditText
             android:id="@+id/email"
-            android:layout_width="300dp"
-            android:layout_height="70dp"
-            android:background="@drawable/view_borde_redondeado"
-            android:paddingStart="10dp"
-            android:paddingTop="25dp"
             style="@style/textStyle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="0dp"
-            android:imeOptions="actionNext"
-            android:singleLine="true"
-            />
-
-
-        <TextView
-            style="@style/textStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Contraseña"
-            app:layout_constraintEnd_toEndOf="@+id/contraseña"
-            app:layout_constraintHorizontal_bias="0.037"
-            app:layout_constraintStart_toStartOf="@+id/contraseña"
-            app:layout_constraintTop_toTopOf="@id/contraseña" />
+            android:layout_weight="0.8"
+            android:background="@drawable/view_redondeado_gris"
+            android:hint="Email"
+            android:imeOptions="actionNext"
+            android:paddingStart="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:singleLine="true"
+            android:textColorHint="@color/textColorHint"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/emailCheck"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_gravity="right"
+            android:layout_weight="0.15"
+            android:paddingStart="24dp"
+            android:src="@drawable/ic_circle_empty" />
+
+    </LinearLayout>
+
+
+    <TextView
+        style="@style/textStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:text="Contraseña"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/nombre"
+        app:layout_constraintHorizontal_bias="0.037"
+        app:layout_constraintStart_toStartOf="@+id/nombre"
+        app:layout_constraintTop_toTopOf="@id/nombre" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <EditText
             android:id="@+id/contraseña"
-            android:layout_width="300dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/view_borde_redondeado"
-            android:inputType="textPassword"
-            android:paddingStart="10dp"
-            android:paddingTop="25dp"
             style="@style/textStyle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.8"
+            android:background="@drawable/view_redondeado_gris"
+            android:hint="Contraseña"
+            android:imeOptions="actionNext"
+            android:paddingStart="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:singleLine="true"
+            android:textColorHint="@color/textColorHint"
+            android:textSize="16sp"
+            android:inputType="textPassword"/>
+
+        <ImageView
+            android:id="@+id/contraseñaCheck"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_gravity="right"
+            android:layout_weight="0.15"
+            android:paddingStart="24dp"
+            android:src="@drawable/ic_circle_empty" />
+
+    </LinearLayout>
 
         <TextView
             style="@style/textStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="5dp"
             android:text="Repetir contraseña"
-            app:layout_constraintEnd_toEndOf="@+id/repetirContraseña"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/nombre"
             app:layout_constraintHorizontal_bias="0.037"
-            app:layout_constraintStart_toStartOf="@+id/repetirContraseña"
-            app:layout_constraintTop_toTopOf="@id/repetirContraseña" />
+            app:layout_constraintStart_toStartOf="@+id/nombre"
+            app:layout_constraintTop_toTopOf="@id/nombre" />
 
-        <EditText
-            android:id="@+id/repetirContraseña"
-            android:layout_width="300dp"
-            android:layout_height="70dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/view_borde_redondeado"
-            android:inputType="textPassword"
-            android:paddingStart="10dp"
-            android:paddingTop="25dp"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            style="@style/textStyle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/contraseña" />
+            <EditText
+                android:id="@+id/repetirContraseña"
+                style="@style/textStyle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:background="@drawable/view_redondeado_gris"
+                android:hint="Contraseña"
+                android:imeOptions="actionNext"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:singleLine="true"
+                android:textColorHint="@color/textColorHint"
+                android:textSize="16sp"
+                android:inputType="textPassword"/>
 
-        <TextView
-            android:id="@+id/registrarse"
-            style="@style/textStyle"
-            android:layout_width="300dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="32dp"
-            android:background="@drawable/view_redondeado"
-            android:gravity="center"
-            android:text="Registrarse"
-            android:textSize="15dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.495"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/repetirContraseña"
-            app:layout_constraintVertical_bias="0.523" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+            <ImageView
+                android:id="@+id/repetirContraseñaCheck"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_gravity="right"
+                android:layout_weight="0.15"
+                android:paddingStart="24dp"
+                android:src="@drawable/ic_circle_empty" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/registrarse"
+        style="@style/textStyle"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center|bottom"
+        android:layout_marginBottom="28dp"
+        android:background="@drawable/view_redondeado_variation"
+        android:gravity="center"
+        android:text="Registrase"
+        android:textColor="@color/background"
+        android:textSize="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

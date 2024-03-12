@@ -2,13 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="55dp"
+    android:background="@color/background">
 
     <LinearLayout
         android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:background="@drawable/view_redondeado_gris"
+
         >
 
         <LinearLayout
@@ -20,10 +21,11 @@
             <TextView
                 android:id="@+id/posicion"
                 android:layout_width="0dp"
-                android:layout_weight="0.1"
+                android:layout_weight="0.15"
                 android:layout_height="wrap_content"
                 style="@style/textStyle"
-                android:textSize="10dp"
+                android:textSize="14dp"
+                android:textColor="@color/azulOscuro"
                 android:text="1"
                 android:layout_gravity="center"
                 android:gravity="center"/>
@@ -31,7 +33,7 @@
             <ImageView
                 android:id="@+id/escudo"
                 android:layout_width="0dp"
-                android:layout_weight="0.2"
+                android:layout_weight="0.1"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/ic_escudo" />
@@ -41,7 +43,9 @@
                 android:layout_weight="0.4"
                 android:layout_height="wrap_content"
                 style="@style/textStyle"
-                android:textSize="12dp"
+                android:textSize="14dp"
+                android:textColor="@color/azulOscuro"
+                android:textStyle="bold"
                 android:text="Boca Juniors"
 
                 android:layout_gravity="center"
@@ -49,66 +53,17 @@
 
         </LinearLayout>
 
+
         <TextView
             android:id="@+id/partidos"
+            style="@style/textStyle"
             android:layout_width="0dp"
-            android:layout_weight="0.1"
             android:layout_height="match_parent"
+            android:layout_weight="0.1"
+            android:gravity="center"
             android:text="P"
-            android:gravity="center"
-            style="@style/textStyle"
-            android:textSize="12dp"/>
-
-        <TextView
-            android:id="@+id/ganados"
-            android:layout_width="0dp"
-            android:layout_weight="0.1"
-            android:layout_height="match_parent"
-            android:text="G"
-            android:gravity="center"
-            style="@style/textStyle"
-            android:textSize="12dp"/>
-
-        <TextView
-            android:id="@+id/empatados"
-            android:layout_width="0dp"
-            android:layout_weight="0.1"
-            android:layout_height="match_parent"
-            android:text="E"
-            android:gravity="center"
-            style="@style/textStyle"
-            android:textSize="12dp"/>
-
-        <TextView
-            android:id="@+id/derrota"
-            android:layout_width="0dp"
-            android:layout_weight="0.1"
-            android:layout_height="match_parent"
-            android:text="D"
-            android:gravity="center"
-            style="@style/textStyle"
-            android:textSize="12dp"/>
-
-        <TextView
-            android:id="@+id/golesF"
-            android:layout_width="0dp"
-            android:layout_weight="0.1"
-            android:layout_height="match_parent"
-            android:text="GF"
-            android:gravity="center"
-            style="@style/textStyle"
-            android:textSize="12dp"/>
-
-        <TextView
-            android:id="@+id/golesC"
-            android:layout_width="0dp"
-            android:layout_weight="0.1"
-            android:layout_height="match_parent"
-            android:text="GC"
-            android:gravity="center"
-            android:textStyle="bold"
-            style="@style/textStyle"
-            android:textSize="12dp"/>
+            android:textColor="@color/azulOscuro"
+            android:textSize="14dp" />
 
         <TextView
             android:id="@+id/golesDif"
@@ -117,9 +72,9 @@
             android:layout_height="match_parent"
             android:text="DIF"
             android:gravity="center"
-            android:textStyle="bold"
             style="@style/textStyle"
-            android:textSize="12dp"/>
+            android:textSize="14dp"
+            android:textColor="@color/azulOscuro"/>
 
         <TextView
             android:id="@+id/puntos"
@@ -130,8 +85,16 @@
             android:gravity="center"
             android:textStyle="bold"
             style="@style/textStyle"
-            android:textSize="12dp"/>
+            android:textSize="14dp"
+            android:textColor="@color/azulOscuro"/>
 
     </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:background="@color/gris"
+        app:layout_constraintTop_toBottomOf="@+id/ll"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

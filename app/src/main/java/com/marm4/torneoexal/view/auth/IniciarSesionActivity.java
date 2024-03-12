@@ -4,8 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.marm4.torneoexal.R;
@@ -19,7 +23,8 @@ public class IniciarSesionActivity extends AppCompatActivity {
     private EditText contraseña;
     private TextView iniciarSesion;
     private TextView registrarse;
-    private TextView invitado;
+    private ImageView emailCheck;
+    private ImageView contraseñaCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,22 +39,64 @@ public class IniciarSesionActivity extends AppCompatActivity {
         contraseña = findViewById(R.id.contraseña);
         iniciarSesion = findViewById(R.id.iniciarSesion);
         registrarse = findViewById(R.id.registrarse);
-        invitado = findViewById(R.id.invitado);
+        emailCheck = findViewById(R.id.emailCheck);
+        contraseñaCheck = findViewById(R.id.contraseñaCheck);
 
         listeners();
 
     }
 
     private void listeners() {
-        TextView mensaje = findViewById(R.id.mensaje);
         AuthController authController = new AuthController();
+
+        email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(email.getText().toString().endsWith(".com")){
+                    emailCheck.setImageDrawable(getDrawable(R.drawable.ic_check));
+                }else {
+                    emailCheck.setImageDrawable(getDrawable(R.drawable.ic_cerrar));
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        contraseña.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                    if(contraseña.getText().toString().length() >= 8){
+                        contraseñaCheck.setImageDrawable(getDrawable(R.drawable.ic_check));
+                    }else{
+                        contraseñaCheck.setImageDrawable(getDrawable(R.drawable.ic_cerrar));
+                    }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         iniciarSesion.setOnClickListener(view -> {
             String emailString = email.getText().toString();
             String contraseñaString = contraseña.getText().toString();
             if(emailString.isEmpty() || contraseñaString.isEmpty()){
-                mensaje.setText("Complete los campos");
-                mensaje.setVisibility(View.VISIBLE);
+                emailCheck.setImageDrawable(getDrawable(R.drawable.ic_cerrar));
+                contraseñaCheck.setImageDrawable(getDrawable(R.drawable.ic_cerrar));
             }
             else{
                 authController.logIn(emailString, contraseñaString, new InicioSesionExito() {
@@ -60,8 +107,8 @@ public class IniciarSesionActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                         else{
-                            mensaje.setText("Error al iniciar sesión");
-                            mensaje.setVisibility(View.VISIBLE);
+                            emailCheck.setImageDrawable(getDrawable(R.drawable.ic_cerrar));
+                            contraseñaCheck.setImageDrawable(getDrawable(R.drawable.ic_cerrar));
                         }
                     }
                 });

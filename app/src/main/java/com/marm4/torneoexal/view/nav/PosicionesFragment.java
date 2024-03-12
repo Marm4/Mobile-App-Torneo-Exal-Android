@@ -59,9 +59,10 @@ public class PosicionesFragment extends Fragment {
             EquipoTabla et = new EquipoTabla();
             et.setEquipo(e);
             int goles = 0;
-            for (Jugador j : e.getJugadores()) {
-                goles = goles + j.getGoles();
-            }
+            if(e.getJugadores()!=null)
+                for (Jugador j : e.getJugadores()) {
+                    goles = goles + j.getGoles();
+                }
             et.setGolesFavor(String.valueOf(goles));
             et.setPuntos(Torneo.getInstance().getPuntosPorId(e.getId()));
             et.setPartidos(getCantidadPartidos(e,"partidos"));
@@ -77,7 +78,13 @@ public class PosicionesFragment extends Fragment {
         Collections.sort(equiposTabla, new Comparator<EquipoTabla>() {
             @Override
             public int compare(EquipoTabla equipo1, EquipoTabla equipo2) {
-                return Integer.compare(Integer.parseInt(equipo2.getPuntos()), Integer.parseInt(equipo1.getPuntos()));
+                int comparacionPuntos = Integer.compare(Integer.parseInt(equipo2.getPuntos()), Integer.parseInt(equipo1.getPuntos()));
+
+                if (comparacionPuntos == 0) {
+                    return Integer.compare(Integer.parseInt(equipo2.getDiferenciaGoles()), Integer.parseInt(equipo1.getDiferenciaGoles()));
+                } else {
+                    return comparacionPuntos;
+                }
             }
         });
         int i = 1;
@@ -148,12 +155,14 @@ public class PosicionesFragment extends Fragment {
         int golesEnContra = 0;
         for(Fixture f : fList){
             for(Partido p : f.getPartidos()){
-                if(p.getEquipoUno().equals(e.getId()))
+                if(p.getEquipoUno().equals(e.getId())){
                     if(p.getGolesEquipoDos()!=null)
                         golesEnContra = golesEnContra + p.getGolesEquipoDos().size();
-                else if (p.getEquipoDos().equals(e.getId()))
-                    if(p.getGolesEquipoUno()!=null)
-                        golesEnContra = golesEnContra + p.getGolesEquipoUno().size();
+                }
+                else if (p.getEquipoDos().equals(e.getId())) {
+                        if (p.getGolesEquipoUno() != null)
+                            golesEnContra = golesEnContra + p.getGolesEquipoUno().size();
+                }
             }
         }
 
