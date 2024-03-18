@@ -187,9 +187,9 @@ public class PartidoActivity extends AppCompatActivity {
         List<Tarjeta> tarjetas = new ArrayList<>(partido.getTarjetas());
         List<EstadisticasPartido> estadisticas = new ArrayList<>();
         int i = 0;
-        boolean getOut = false;
-        while(tarjetas.size()!=0 || getOut){
-                EstadisticasPartido stats = new EstadisticasPartido();
+        for(int k=0; k<partido.getTarjetas().size(); k++){
+            EstadisticasPartido stats = new EstadisticasPartido();
+            if(tarjetas.size()>0) {
                 for (Jugador j : equipo1.getJugadores()) {
                     if (tarjetas.get(i).getJugadorId().equals(j.getId())) {
                         stats.setTarjeta1(tarjetas.get(i));
@@ -199,22 +199,21 @@ public class PartidoActivity extends AppCompatActivity {
                     }
 
                 }
-                if(tarjetas.size()>0){
-                    for (Jugador j : equipo2.getJugadores()) {
-                        if (tarjetas.get(i).getJugadorId().equals(j.getId())) {
-                            stats.setTarjeta2(tarjetas.get(i));
-                            stats.setNombreJugadorEquipo2(j.getNombre());
-                            tarjetas.remove(stats.getTarjeta2());
-                            getOut = false;
-                            break;
-                        }
+            }
+            if(tarjetas.size()>0){
+                for (Jugador j : equipo2.getJugadores()) {
+                    if (tarjetas.get(i).getJugadorId().equals(j.getId())) {
+                        stats.setTarjeta2(tarjetas.get(i));
+                        stats.setNombreJugadorEquipo2(j.getNombre());
+                        tarjetas.remove(stats.getTarjeta2());
+                        break;
                     }
                 }
-                estadisticas.add(stats);
             }
-
-        return  estadisticas;
+            estadisticas.add(stats);
         }
+        return  estadisticas;
+    }
 
     private String getNombreJugadorById(String id, Equipo e){
         for(Jugador j : e.getJugadores()){

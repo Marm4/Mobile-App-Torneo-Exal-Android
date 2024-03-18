@@ -134,6 +134,7 @@ public class VistaPartidosAdapter extends RecyclerView.Adapter<VistaPartidosAdap
             else{
                 String horaString = hora.getText().toString();
                 vs.setText(horaString);
+                vs.setTextColor(vs.getContext().getColor(R.color.azulOscuro));
                 vs.setBackgroundDrawable(vs.getContext().getDrawable(R.drawable.view_borde_redondeado));
             }
 
